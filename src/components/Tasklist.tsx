@@ -5,7 +5,7 @@ type PropsType = {
     title: string
     tasks: Array<TaskArray>
     removeTask: (id: string) => void
-    filterTask: (value: FilterValueType) => void
+    filterTasks: (value: FilterValueType) => void
 }
 
 export type TaskArray = {
@@ -31,9 +31,9 @@ export const Tasklist = (props: PropsType) => {
                     )
                 })}
             </ul>
-            <button onClick={() => props.filterTask('all')}>All</button>
-            <button onClick={() => props.filterTask('active')}>Active</button>
-            <button onClick={() => props.filterTask('completed')}>Completed</button>
+            <button onClick={() => props.filterTasks('all')}>All</button>
+            <button onClick={() => props.filterTasks('active')}>Active</button>
+            <button onClick={() => props.filterTasks('completed')}>Completed</button>
         </div>
     );
 };

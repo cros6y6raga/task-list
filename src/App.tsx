@@ -16,23 +16,23 @@ function App() {
         const remove = tasks.filter(el => el.id !== id)
         setTasks(remove)
     }
-    let filteredTask = tasks
+    let filteredTasks = tasks
     if (filter === 'active') {
-        filteredTask = tasks.filter(el => !el.isDone)
+        filteredTasks = tasks.filter(el => !el.isDone)
     }
     if (filter === 'completed') {
-        filteredTask = tasks.filter(el => el.isDone)
+        filteredTasks = tasks.filter(el => el.isDone)
     }
-    const filterTask = (value: FilterValueType) => {
+    const filterTasks = (value: FilterValueType) => {
         setFilter(value)
     }
     return (
         <div className="App">
             <Tasklist
                 title={'Tasklist'}
-                tasks={filteredTask}
+                tasks={filteredTasks}
                 removeTask={removeTask}
-                filterTask={filterTask}
+                filterTasks={filterTasks}
             />
         </div>
     );

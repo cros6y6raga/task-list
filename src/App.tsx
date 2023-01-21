@@ -9,9 +9,15 @@ function App() {
         {id: v1(), name: 'Go to the gym', isDone: false},
         {id: v1(), name: 'Learning a programming language', isDone: true},
     ])
+    const removeTask = (id: string) => {
+        const remove = task.filter(el => el.id !== id)
+        setTask(remove)
+    }
     return (
         <div className="App">
-            <Tasklist task={task}/>
+            <Tasklist task={task}
+                      removeTask={removeTask}
+            />
         </div>
     );
 }

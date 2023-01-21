@@ -2,6 +2,7 @@ import React from 'react';
 
 type PropsType = {
     task: Array<TaskArray>
+    removeTask:(id: string)=>void
 }
 
 type TaskArray = {
@@ -20,7 +21,7 @@ export const Tasklist = (props: PropsType) => {
                 {props.task.map(el => {
                     return (
                         <li key={el.id}>
-                            <button onClick={()=>{}}>Delete</button>
+                            <button onClick={()=>{props.removeTask(el.id)}}>Delete</button>
                             <input type="checkbox" checked={el.isDone}/>
                             <span>{el.name}</span>
                         </li>

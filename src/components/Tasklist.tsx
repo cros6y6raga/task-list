@@ -13,14 +13,18 @@ type TaskArray = {
 export const Tasklist = (props: PropsType) => {
     return (
         <div>
-            <h3>main</h3>
+            <h3>Tasklist</h3>
             <input type="text"/>
             <button>+</button>
             <ul>
-                <li>
-                    <input type="checkbox" checked={false}/>
-                    <span>main</span>
-                </li>
+                {props.task.map(el => {
+                    return (
+                        <li key={el.id}>
+                            <input type="checkbox" checked={el.isDone}/>
+                            <span>{el.name}</span>
+                        </li>
+                    )
+                })}
             </ul>
         </div>
     );

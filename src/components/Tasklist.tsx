@@ -1,11 +1,14 @@
 import React from 'react';
+import {FilterValueType} from "../App";
 
 type PropsType = {
-    task: Array<TaskArray>
+    title: string
+    tasks: Array<TaskArray>
     removeTask: (id: string) => void
+    filterTask: (value: FilterValueType) => void
 }
 
-type TaskArray = {
+export type TaskArray = {
     id: string,
     name: string,
     isDone: boolean
@@ -14,11 +17,11 @@ type TaskArray = {
 export const Tasklist = (props: PropsType) => {
     return (
         <div>
-            <h3>Tasklist</h3>
+            <h3>{props.title}</h3>
             <input type="text"/>
             <button>+</button>
             <ul>
-                {props.task.map(el => {
+                {props.tasks.map(el => {
                     return (
                         <li key={el.id}>
                             <button onClick={() => props.removeTask(el.id)}>Delete</button>
@@ -28,9 +31,9 @@ export const Tasklist = (props: PropsType) => {
                     )
                 })}
             </ul>
-            <button onClick={()=>{}}>All</button>
-            <button onClick={()=>{}}>Active</button>
-            <button onClick={()=>{}}>Completed</button>
+            <button onClick={() => props.filterTask('all')}>All</button>
+            <button onClick={() => props.filterTask('active')}>Active</button>
+            <button onClick={() => props.filterTask('completed')}>Completed</button>
         </div>
     );
 };

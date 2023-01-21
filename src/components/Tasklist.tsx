@@ -20,6 +20,7 @@ export const Tasklist = (props: PropsType) => {
                 {props.task.map(el => {
                     return (
                         <li key={el.id}>
+                            <button onClick={()=>{}}>Delete</button>
                             <input type="checkbox" checked={el.isDone}/>
                             <span>{el.name}</span>
                         </li>

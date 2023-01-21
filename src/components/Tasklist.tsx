@@ -1,6 +1,16 @@
 import React from 'react';
 
-export const Tasklist = () => {
+type PropsType = {
+    task: Array<TaskArray>
+}
+
+type TaskArray = {
+    id: string,
+    name: string,
+    isDone: boolean
+}
+
+export const Tasklist = (props: PropsType) => {
     return (
         <div>
             <h3>main</h3>

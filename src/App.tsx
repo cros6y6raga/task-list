@@ -11,7 +11,7 @@ function App() {
     ])
     return (
         <div className="App">
-            <Tasklist/>
+            <Tasklist task={task}/>
         </div>
     );
 }

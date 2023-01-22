@@ -16,6 +16,10 @@ function App() {
         const remove = tasks.filter(el => el.id !== id)
         setTasks(remove)
     }
+    const addTask = () => {
+        const newTask = {id: v1(), name: 'Learning a programming language', isDone: false}
+
+    }
     let filteredTasks = tasks
     if (filter === 'active') {
         filteredTasks = tasks.filter(el => !el.isDone)

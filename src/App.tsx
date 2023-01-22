@@ -1,13 +1,13 @@
 import React, {useState} from 'react';
 import './App.css';
-import {TaskArray, Tasklist} from "./components/Tasklist";
+import {ITaskArray, Tasklist} from "./components/Tasklist";
 import {v1} from "uuid";
 
 export type FilterValueType = 'all' | 'active' | 'completed'
 
 function App() {
 
-    const [tasks, setTasks] = useState<TaskArray[]>([
+    const [tasks, setTasks] = useState<ITaskArray[]>([
         {id: v1(), name: 'Go to the dentist', isDone: false},
         {id: v1(), name: 'Go to the gym', isDone: false},
         {id: v1(), name: 'Learning a programming language', isDone: true},

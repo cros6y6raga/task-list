@@ -1,21 +1,21 @@
 import React, {ChangeEvent, KeyboardEvent, useState} from 'react';
 import {FilterValueType} from "../App";
 
-type PropsType = {
+interface IPropsType {
     title: string
-    tasks: Array<TaskArray>
+    tasks: ITaskArray[]
     removeTask: (id: string) => void
     filterTasks: (value: FilterValueType) => void
     addTask: (title: string) => void
 }
 
-export type TaskArray = {
-    id: string,
-    name: string,
+export interface ITaskArray {
+    id: string
+    name: string
     isDone: boolean
 }
 
-export const Tasklist: React.FC<PropsType> = (props) => {
+export const Tasklist: React.FC<IPropsType> = (props) => {
 
     const [title, setTitle] = useState('')
 

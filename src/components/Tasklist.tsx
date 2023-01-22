@@ -23,6 +23,15 @@ export const Tasklist = (props: PropsType) => {
     const onClickAddTaskHandler = () => {
 
     }
+    const onClickFilterAll = () => {
+        props.filterTasks('all')
+    }
+    const onClickFilterActive = () => {
+        props.filterTasks('active')
+    }
+    const onClickFilterCompleted = () => {
+        props.filterTasks('completed')
+    }
     return (
         <div>
             <h3>{props.title}</h3>
@@ -39,9 +48,9 @@ export const Tasklist = (props: PropsType) => {
                     )
                 })}
             </ul>
-            <button onClick={() => props.filterTasks('all')}>All</button>
-            <button onClick={() => props.filterTasks('active')}>Active</button>
-            <button onClick={() => props.filterTasks('completed')}>Completed</button>
+            <button onClick={onClickFilterAll}>All</button>
+            <button onClick={onClickFilterActive}>Active</button>
+            <button onClick={onClickFilterCompleted}>Completed</button>
         </div>
     );
 };

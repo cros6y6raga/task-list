@@ -15,7 +15,7 @@ export type TaskArray = {
     isDone: boolean
 }
 
-export const Tasklist = (props: PropsType) => {
+export const Tasklist: React.FC<PropsType> = (props) => {
 
     const [title, setTitle] = useState('')
 

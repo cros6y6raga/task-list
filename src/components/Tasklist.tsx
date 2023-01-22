@@ -6,7 +6,7 @@ type PropsType = {
     tasks: Array<TaskArray>
     removeTask: (id: string) => void
     filterTasks: (value: FilterValueType) => void
-    addTask: () => void
+    addTask: (title: string) => void
 }
 
 export type TaskArray = {
@@ -16,26 +16,34 @@ export type TaskArray = {
 }
 
 export const Tasklist = (props: PropsType) => {
+
     const [title, setTitle] = useState('')
+
     const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-
+        setTitle(e.currentTarget.value)
     }
+
     const onClickAddTaskHandler = () => {
-
+        props.addTask(title)
+        setTitle('')
     }
+
     const onClickFilterAll = () => {
         props.filterTasks('all')
     }
+
     const onClickFilterActive = () => {
         props.filterTasks('active')
     }
+
     const onClickFilterCompleted = () => {
         props.filterTasks('completed')
     }
+
     return (
         <div>
             <h3>{props.title}</h3>
-            <input onChange={onChangeHandler} type="text"/>
+            <input value={title} onChange={onChangeHandler} type="text"/>
             <button onClick={onClickAddTaskHandler}>+</button>
             <ul>
                 {props.tasks.map(el => {

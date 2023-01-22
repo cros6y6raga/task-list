@@ -6,22 +6,26 @@ import {v1} from "uuid";
 export type FilterValueType = 'all' | 'active' | 'completed'
 
 function App() {
+
     const [tasks, setTasks] = useState<TaskArray[]>([
         {id: v1(), name: 'Go to the dentist', isDone: false},
         {id: v1(), name: 'Go to the gym', isDone: false},
         {id: v1(), name: 'Learning a programming language', isDone: true},
     ])
+
     const [filter, setFilter] = useState<FilterValueType>('all')
+
     const removeTask = (id: string) => {
         const remove = tasks.filter(el => el.id !== id)
         setTasks(remove)
     }
-    const addTask = () => {
-        const task = {id: v1(), name: 'newTask', isDone: false}
+
+    const addTask = (title: string) => {
+        const task = {id: v1(), name: title, isDone: false}
         const newTask = [task, ...tasks]
         setTasks(newTask)
-
     }
+
     let filteredTasks = tasks
     if (filter === 'active') {
         filteredTasks = tasks.filter(el => !el.isDone)
@@ -32,6 +36,7 @@ function App() {
     const filterTasks = (value: FilterValueType) => {
         setFilter(value)
     }
+
     return (
         <div className="App">
             <Tasklist

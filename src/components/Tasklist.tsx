@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {ChangeEvent, useState} from 'react';
 import {FilterValueType} from "../App";
 
 type PropsType = {
@@ -6,6 +6,7 @@ type PropsType = {
     tasks: Array<TaskArray>
     removeTask: (id: string) => void
     filterTasks: (value: FilterValueType) => void
+    addTask: () => void
 }
 
 export type TaskArray = {
@@ -15,11 +16,18 @@ export type TaskArray = {
 }
 
 export const Tasklist = (props: PropsType) => {
+    const [title, setTitle] = useState('')
+    const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+
+    }
+    const onClickAddTaskHandler = () => {
+
+    }
     return (
         <div>
             <h3>{props.title}</h3>
-            <input type="text"/>
-            <button>+</button>
+            <input onChange={onChangeHandler} type="text"/>
+            <button onClick={onClickAddTaskHandler}>+</button>
             <ul>
                 {props.tasks.map(el => {
                     return (

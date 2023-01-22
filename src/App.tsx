@@ -17,7 +17,9 @@ function App() {
         setTasks(remove)
     }
     const addTask = () => {
-        const newTask = {id: v1(), name: 'Learning a programming language', isDone: false}
+        const task = {id: v1(), name: 'newTask', isDone: false}
+        const newTask = [task, ...tasks]
+        setTasks(newTask)
 
     }
     let filteredTasks = tasks
@@ -37,6 +39,7 @@ function App() {
                 tasks={filteredTasks}
                 removeTask={removeTask}
                 filterTasks={filterTasks}
+                addTask={addTask}
             />
         </div>
     );

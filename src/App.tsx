@@ -38,7 +38,6 @@ function App() {
     }
     // Возврат JSX элементов
     return (
-        // Компанента и передача в компаненту данных
         <div className="App">
             <Tasklist
                 title={'Tasklist'}

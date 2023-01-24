@@ -18,3 +18,7 @@ ul {
 .active-filter {
     background-color: green;
 }
+
+.is-done {
+    opacity: 0.5;
+}

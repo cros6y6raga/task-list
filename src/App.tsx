@@ -37,8 +37,8 @@ function App() {
         setFilter(value)
     }
     // Функция переключения чекбоксов
-    const checkedTask = () => {
-
+    const checkedTask = (id: string, checked: boolean) => {
+        setTasks(tasks.map(el => el.id === id ? {...el, isDone: checked} : el))
     }
     // Возврат JSX элементов
     return (
@@ -49,6 +49,7 @@ function App() {
                 removeTask={removeTask}
                 filterTasks={filterTasks}
                 addTask={addTask}
+                checkedTask={checkedTask}
             />
         </div>
     );

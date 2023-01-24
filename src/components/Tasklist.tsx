@@ -8,6 +8,7 @@ interface IPropsType {
     removeTask: (id: string) => void
     filterTasks: (value: FilterValueType) => void
     addTask: (title: string) => void
+    checkedTask: (id: string, checked: boolean) => void
 }
 
 // Типизация массива tasks
@@ -56,10 +57,14 @@ export const Tasklist: React.FC<IPropsType> = (props) => {
             <button onClick={onClickAddTaskHandler}>+</button>
             <ul>
                 {props.tasks.map(el => {
+                    const onChangeChecked = (e: ChangeEvent<HTMLInputElement>) => {
+                        const newIsDone = e.currentTarget.checked
+                        props.checkedTask(el.id, newIsDone)
+                    }
                     return (
                         <li key={el.id}>
                             <button onClick={() => props.removeTask(el.id)}>Delete</button>
-                            <input type="checkbox" checked={el.isDone}/>
+                            <input type="checkbox" checked={el.isDone} onChange={onChangeChecked}/>
                             <span>{el.name}</span>
                         </li>
                     )

@@ -28,8 +28,10 @@ export const Tasklist: React.FC<IPropsType> = (props) => {
     }
     // Функция для баттона
     const onClickAddTaskHandler = () => {
-        props.addTask(title)
-        setTitle('')
+        if (title.trim() !== '') {
+            props.addTask(title.trim())
+            setTitle('')
+        }
     }
     // Функция для добавления таски через Enter
     const onKeyDownHandler = (e: KeyboardEvent<HTMLInputElement>) => {

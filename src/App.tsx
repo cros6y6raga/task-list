@@ -36,6 +36,10 @@ function App() {
     const filterTasks = (value: FilterValueType) => {
         setFilter(value)
     }
+    // Функция переключения чекбоксов
+    const checkedTask = () => {
+
+    }
     // Возврат JSX элементов
     return (
         <div className="App">

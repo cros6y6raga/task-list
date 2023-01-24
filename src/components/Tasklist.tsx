@@ -9,6 +9,7 @@ interface IPropsType {
     filterTasks: (value: FilterValueType) => void
     addTask: (title: string) => void
     checkedTask: (id: string, checked: boolean) => void
+    filter: FilterValueType
 }
 
 // Типизация массива tasks
@@ -20,13 +21,16 @@ export interface ITaskArray {
 
 // Отрисовка компаненты, указал в типизации что она функциональная
 export const Tasklist: React.FC<IPropsType> = (props) => {
+
     // Локальный стейт для инпута и баттона
     const [title, setTitle] = useState('')
     const [error, setError] = useState<string | null>(null)
+
     // Функция для инпута
     const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
         setTitle(e.currentTarget.value)
     }
+
     // Функция для баттона
     const onClickAddTaskHandler = () => {
         if (title.trim() !== '') {
@@ -36,6 +40,7 @@ export const Tasklist: React.FC<IPropsType> = (props) => {
             setError('Title is required')
         }
     }
+
     // Функция для добавления таски через Enter
     const onKeyDownHandler = (e: KeyboardEvent<HTMLInputElement>) => {
         setError(null)
@@ -43,18 +48,22 @@ export const Tasklist: React.FC<IPropsType> = (props) => {
             onClickAddTaskHandler()
         }
     }
+
     // Функция для фильтрации всех тасок
     const onClickFilterAll = () => {
         props.filterTasks('all')
     }
+
     // Функция для фильтрации активных тасок
     const onClickFilterActive = () => {
         props.filterTasks('active')
     }
+
     // Функция для фильтрации выполненных тасок
     const onClickFilterCompleted = () => {
         props.filterTasks('completed')
     }
+
     // Возврат JSX элементов
     return (
         <div>
@@ -80,9 +89,12 @@ export const Tasklist: React.FC<IPropsType> = (props) => {
                     )
                 })}
             </ul>
-            <button onClick={onClickFilterAll}>All</button>
-            <button onClick={onClickFilterActive}>Active</button>
-            <button onClick={onClickFilterCompleted}>Completed</button>
+            <button className={props.filter === 'all' ? 'active-filter' : ''} onClick={onClickFilterAll}>All</button>
+            <button className={props.filter === 'active' ? 'active-filter' : ''} onClick={onClickFilterActive}>Active
+            </button>
+            <button className={props.filter === 'completed' ? 'active-filter' : ''}
+                    onClick={onClickFilterCompleted}>Completed
+            </button>
         </div>
     );
 };

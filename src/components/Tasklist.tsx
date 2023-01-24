@@ -22,6 +22,7 @@ export interface ITaskArray {
 export const Tasklist: React.FC<IPropsType> = (props) => {
     // Локальный стейт для инпута и баттона
     const [title, setTitle] = useState('')
+    const [error, setError] = useState<string | null>(null)
     // Функция для инпута
     const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
         setTitle(e.currentTarget.value)
@@ -31,10 +32,13 @@ export const Tasklist: React.FC<IPropsType> = (props) => {
         if (title.trim() !== '') {
             props.addTask(title.trim())
             setTitle('')
+        } else {
+            setError('Title is required')
         }
     }
     // Функция для добавления таски через Enter
     const onKeyDownHandler = (e: KeyboardEvent<HTMLInputElement>) => {
+        setError(null)
         if (e.key === 'Enter') {
             onClickAddTaskHandler()
         }
@@ -55,8 +59,12 @@ export const Tasklist: React.FC<IPropsType> = (props) => {
     return (
         <div>
             <h3>{props.title}</h3>
-            <input value={title} onChange={onChangeHandler} onKeyDown={onKeyDownHandler} type="text"/>
+            <input className={error ? 'error' : ''}
+                   value={title} onChange={onChangeHandler}
+                   onKeyDown={onKeyDownHandler}
+                   type="text"/>
             <button onClick={onClickAddTaskHandler}>+</button>
+            {error && <div className={'error-message'}>{error}</div>}
             <ul>
                 {props.tasks.map(el => {
                     const onChangeChecked = (e: ChangeEvent<HTMLInputElement>) => {

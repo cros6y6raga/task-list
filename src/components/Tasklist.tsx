@@ -80,9 +80,12 @@ export const Tasklist: React.FC<IPropsType> = (props) => {
                         const newIsDone = e.currentTarget.checked
                         props.checkedTask(el.id, newIsDone)
                     }
+                    const removeTaskHandler = () => {
+                        props.removeTask(el.id)
+                    }
                     return (
                         <li key={el.id} className={el.isDone ? 'is-done' : ''}>
-                            <button onClick={() => props.removeTask(el.id)}>Delete</button>
+                            <button onClick={removeTaskHandler}>Delete</button>
                             <input type="checkbox" checked={el.isDone} onChange={onChangeChecked}/>
                             <span>{el.name}</span>
                         </li>

@@ -31,6 +31,11 @@ function App() {
         setTasks(newTask)
     }
 
+    // Функция фильтрации тасок
+    const filterTasks = (value: FilterValueType) => {
+        setFilter(value)
+    }
+
     // Фильтрация тасок
     let filteredTasks = tasks
     if (filter === 'active') {
@@ -38,9 +43,6 @@ function App() {
     }
     if (filter === 'completed') {
         filteredTasks = tasks.filter(el => el.isDone)
-    }
-    const filterTasks = (value: FilterValueType) => {
-        setFilter(value)
     }
 
     // Функция переключения чекбоксов

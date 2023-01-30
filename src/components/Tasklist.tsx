@@ -72,7 +72,7 @@ export const Tasklist: React.FC<IPropsType> = (props) => {
                    value={title} onChange={onChangeHandler}
                    onKeyDown={onKeyDownHandler}
                    type="text"/>
-            <button onClick={onClickAddTaskHandler}>+</button>
+            <button className={'button-plus'} onClick={onClickAddTaskHandler}>+</button>
             {error && <div className={'error-message'}>{error}</div>}
             <ul>
                 {props.tasks.map(el => {
@@ -86,7 +86,8 @@ export const Tasklist: React.FC<IPropsType> = (props) => {
                     return (
                         <li key={el.id} className={el.isDone ? 'is-done' : ''}>
                             <button className={'delete'} onClick={removeTaskHandler}>Delete</button>
-                            <input type="checkbox" checked={el.isDone} onChange={onChangeChecked}/>
+                            <input className={'checkbox'} type="checkbox" checked={el.isDone}
+                                   onChange={onChangeChecked}/>
                             <span>{el.name}</span>
                         </li>
                     )

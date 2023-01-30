@@ -5,6 +5,11 @@ ul {
 
 button {
     border: none;
+    cursor: pointer;
+}
+
+input {
+    margin-right: 5px;
 }
 
 .App {
@@ -30,4 +35,14 @@ button {
 
 .delete {
     background-color: red;
+}
+
+.checkbox {
+    cursor: pointer;
+}
+
+.button-plus {
+    background-color: green;
+    width: 22px;
+    height: 22px;
 }

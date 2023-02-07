@@ -10,6 +10,7 @@ interface IPropsType {
     addTask: (title: string) => void
     checkedTask: (id: string, checked: boolean) => void
     filter: FilterValueType
+    todolistID: string
 }
 
 // Типизация массива tasks

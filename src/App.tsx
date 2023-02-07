@@ -46,7 +46,7 @@ function App() {
     });
 
     // Локальный стейт фильтрации тасок
-    // const [filter, setFilter] = useState<FilterValueType>('all')
+    const [filter, setFilter] = useState<FilterValueType>('all')
 
     // Функция удаления таски
     const removeTask = (id: string) => {
@@ -87,6 +87,8 @@ function App() {
                 }
                 return (
                     <Tasklist
+                        key={t.id}
+                        todolistID={t.id}
                         title={t.title}
                         tasks={filteredTasks}
                         removeTask={removeTask}

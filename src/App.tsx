@@ -67,13 +67,13 @@ function App() {
     }
 
     // Фильтрация тасок
-    let filteredTasks = tasks
-    if (filter === 'active') {
-        filteredTasks = tasks.filter(el => !el.isDone)
-    }
-    if (filter === 'completed') {
-        filteredTasks = tasks.filter(el => el.isDone)
-    }
+    // let filteredTasks = tasks
+    // if (filter === 'active') {
+    //     filteredTasks = tasks.filter(el => !el.isDone)
+    // }
+    // if (filter === 'completed') {
+    //     filteredTasks = tasks.filter(el => el.isDone)
+    // }
 
     // Функция переключения чекбоксов
     const checkedTask = (id: string, checked: boolean) => {
@@ -84,6 +84,7 @@ function App() {
     return (
         <div className="App">
             {todolists.map((t) => {
+                let filteredTasks = tasks[t.id]
                 return (
                     <Tasklist
                         title={t.title}

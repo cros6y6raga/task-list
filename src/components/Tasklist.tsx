@@ -15,7 +15,7 @@ interface IPropsType {
 // Типизация массива tasks
 export interface ITaskArray {
     id: string
-    name: string
+    title: string
     isDone: boolean
 }
 
@@ -88,7 +88,7 @@ export const Tasklist: React.FC<IPropsType> = (props) => {
                             <button className={'delete'} onClick={removeTaskHandler}>Delete</button>
                             <input className={'checkbox'} type="checkbox" checked={el.isDone}
                                    onChange={onChangeChecked}/>
-                            <span>{el.name}</span>
+                            <span>{el.title}</span>
                         </li>
                     )
                 })}

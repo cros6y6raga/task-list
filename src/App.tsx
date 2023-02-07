@@ -46,24 +46,24 @@ function App() {
     });
 
     // Локальный стейт фильтрации тасок
-    const [filter, setFilter] = useState<FilterValueType>('all')
+    // const [filter, setFilter] = useState<FilterValueType>('all')
 
     // Функция удаления таски
     const removeTask = (id: string) => {
-        const remove = tasks.filter(el => el.id !== id)
-        setTasks(remove)
+        // const remove = tasks.filter(el => el.id !== id)
+        // setTasks(remove)
     }
 
     // Функция добавления таски
     const addTask = (title: string) => {
-        const task = {id: v1(), name: title, isDone: false}
-        const newTask = [task, ...tasks]
-        setTasks(newTask)
+        // const task = {id: v1(), name: title, isDone: false}
+        // const newTask = [task, ...tasks]
+        // setTasks(newTask)
     }
 
     // Функция фильтрации тасок
     const filterTasks = (value: FilterValueType) => {
-        setFilter(value)
+        // setFilter(value)
     }
 
     // Фильтрация тасок
@@ -77,21 +77,25 @@ function App() {
 
     // Функция переключения чекбоксов
     const checkedTask = (id: string, checked: boolean) => {
-        setTasks(tasks.map(el => el.id === id ? {...el, isDone: checked} : el))
+        // setTasks(tasks.map(el => el.id === id ? {...el, isDone: checked} : el))
     }
 
     // Возврат JSX элементов
     return (
         <div className="App">
-            <Tasklist
-                title={'Tasklist'}
-                tasks={filteredTasks}
-                removeTask={removeTask}
-                filterTasks={filterTasks}
-                addTask={addTask}
-                checkedTask={checkedTask}
-                filter={filter}
-            />
+            {todolists.map((t) => {
+                return (
+                    <Tasklist
+                        title={t.title}
+                        tasks={filteredTasks}
+                        removeTask={removeTask}
+                        filterTasks={filterTasks}
+                        addTask={addTask}
+                        checkedTask={checkedTask}
+                        filter={t.filter}
+                    />
+                )
+            })}
         </div>
     );
 }

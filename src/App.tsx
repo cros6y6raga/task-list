@@ -68,12 +68,6 @@ function App() {
 
     // Фильтрация тасок
     // let filteredTasks = tasks
-    // if (filter === 'active') {
-    //     filteredTasks = tasks.filter(el => !el.isDone)
-    // }
-    // if (filter === 'completed') {
-    //     filteredTasks = tasks.filter(el => el.isDone)
-    // }
 
     // Функция переключения чекбоксов
     const checkedTask = (id: string, checked: boolean) => {
@@ -85,6 +79,12 @@ function App() {
         <div className="App">
             {todolists.map((t) => {
                 let filteredTasks = tasks[t.id]
+                if (t.filter === 'active') {
+                    filteredTasks = tasks[t.id].filter(el => !el.isDone)
+                }
+                if (t.filter === 'completed') {
+                    filteredTasks = tasks[t.id].filter(el => el.isDone)
+                }
                 return (
                     <Tasklist
                         title={t.title}

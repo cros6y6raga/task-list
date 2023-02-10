@@ -1,10 +1,12 @@
 import React, {useState} from 'react';
 import './App.css';
-import {ITaskArray, Tasklist} from "./components/Tasklist";
+import {Tasklist} from "./components/Tasklist";
 import {v1} from "uuid";
 
 // Типизация фильтрации тасок
 export type FilterValueType = 'all' | 'active' | 'completed'
+
+// Типизация ассоциативного массива
 export type TodolistsType = {
     id: string
     title: string
@@ -13,13 +15,7 @@ export type TodolistsType = {
 
 function App() {
 
-    // Локальный стейт тасок
-    // const [tasks, setTasks] = useState<ITaskArray[]>([
-    //     {id: v1(), name: 'Go to the dentist', isDone: false},
-    //     {id: v1(), name: 'Go to the gym', isDone: false},
-    //     {id: v1(), name: 'Learning a programming language', isDone: true},
-    // ])
-
+    //Ассоциативный массив (или объект)
     let todolistID1 = v1();
     let todolistID2 = v1();
 
@@ -45,32 +41,21 @@ function App() {
         ]
     });
 
-    // Локальный стейт фильтрации тасок
-    const [filter, setFilter] = useState<FilterValueType>('all')
-
     // Функция удаления таски
     const removeTask = (todolistID: string, id: string) => {
         setTasks({...tasks, [todolistID]: tasks[todolistID].filter(f => f.id !== id)})
-        // const remove = tasks.filter(el => el.id !== id)
-        // setTasks(remove)
     }
 
     // Функция добавления таски
     const addTask = (todolistID: string, title: string) => {
         let newTask = {id: v1(), title: title, isDone: false}
         setTasks({...tasks, [todolistID]: [newTask, ...tasks[todolistID]]})
-        // const newTask = [task, ...tasks]
-        // setTasks(newTask)
     }
 
     // Функция фильтрации тасок
     const filterTasks = (todolistID: string, value: FilterValueType) => {
         setTodolists(todolists.map(el => el.id === todolistID ? {...el, filter: value} : el))
-        // setFilter(value)
     }
-
-    // Фильтрация тасок
-    // let filteredTasks = tasks
 
     // Функция переключения чекбоксов
     const checkedTask = (todolistID: string, id: string, checked: boolean) => {

@@ -6,7 +6,7 @@ interface IPropsType {
     title: string
     tasks: ITaskArray[]
     removeTask: (id: string) => void
-    filterTasks: (value: FilterValueType) => void
+    filterTasks: (todolistID:string,value: FilterValueType) => void
     addTask: (title: string) => void
     checkedTask: (id: string, checked: boolean) => void
     filter: FilterValueType
@@ -52,17 +52,17 @@ export const Tasklist: React.FC<IPropsType> = (props) => {
 
     // Функция для фильтрации всех тасок
     const onClickFilterAll = () => {
-        props.filterTasks('all')
+        props.filterTasks(props.todolistID,'all')
     }
 
     // Функция для фильтрации активных тасок
     const onClickFilterActive = () => {
-        props.filterTasks('active')
+        props.filterTasks(props.todolistID,'active')
     }
 
     // Функция для фильтрации выполненных тасок
     const onClickFilterCompleted = () => {
-        props.filterTasks('completed')
+        props.filterTasks(props.todolistID,'completed')
     }
 
     // Возврат JSX элементов

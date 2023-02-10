@@ -56,15 +56,16 @@ function App() {
     }
 
     // Функция добавления таски
-    const addTask = (title: string) => {
-        // const task = {id: v1(), name: title, isDone: false}
+    const addTask = (todolistID: string, title: string) => {
+        let newTask = {id: v1(), title: title, isDone: false}
+        setTasks({...tasks, [todolistID]: [newTask, ...tasks[todolistID]]})
         // const newTask = [task, ...tasks]
         // setTasks(newTask)
     }
 
     // Функция фильтрации тасок
     const filterTasks = (todolistID: string, value: FilterValueType) => {
-        setTodolists(todolists.map(f => f.id === todolistID ? {...f, filter: value} : f))
+        setTodolists(todolists.map(el => el.id === todolistID ? {...el, filter: value} : el))
         // setFilter(value)
     }
 
@@ -72,7 +73,7 @@ function App() {
     // let filteredTasks = tasks
 
     // Функция переключения чекбоксов
-    const checkedTask = (id: string, checked: boolean) => {
+    const checkedTask = (todolistID: string,id: string, checked: boolean) => {
         // setTasks(tasks.map(el => el.id === id ? {...el, isDone: checked} : el))
     }
 

@@ -5,8 +5,8 @@ import {FilterValueType} from "../App";
 interface IPropsType {
     title: string
     tasks: ITaskArray[]
-    removeTask: (id: string) => void
-    filterTasks: (todolistID:string,value: FilterValueType) => void
+    removeTask: (todolistID: string, id: string) => void
+    filterTasks: (todolistID: string, value: FilterValueType) => void
     addTask: (title: string) => void
     checkedTask: (id: string, checked: boolean) => void
     filter: FilterValueType
@@ -52,17 +52,17 @@ export const Tasklist: React.FC<IPropsType> = (props) => {
 
     // Функция для фильтрации всех тасок
     const onClickFilterAll = () => {
-        props.filterTasks(props.todolistID,'all')
+        props.filterTasks(props.todolistID, 'all')
     }
 
     // Функция для фильтрации активных тасок
     const onClickFilterActive = () => {
-        props.filterTasks(props.todolistID,'active')
+        props.filterTasks(props.todolistID, 'active')
     }
 
     // Функция для фильтрации выполненных тасок
     const onClickFilterCompleted = () => {
-        props.filterTasks(props.todolistID,'completed')
+        props.filterTasks(props.todolistID, 'completed')
     }
 
     // Возврат JSX элементов
@@ -82,7 +82,7 @@ export const Tasklist: React.FC<IPropsType> = (props) => {
                         props.checkedTask(el.id, newIsDone)
                     }
                     const removeTaskHandler = () => {
-                        props.removeTask(el.id)
+                        props.removeTask(props.todolistID, el.id)
                     }
                     return (
                         <li key={el.id} className={el.isDone ? 'is-done' : ''}>

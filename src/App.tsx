@@ -49,7 +49,8 @@ function App() {
     const [filter, setFilter] = useState<FilterValueType>('all')
 
     // Функция удаления таски
-    const removeTask = (id: string) => {
+    const removeTask = (todolistID: string, id: string) => {
+        setTasks({...tasks, [todolistID]: tasks[todolistID].filter(f => f.id !== id)})
         // const remove = tasks.filter(el => el.id !== id)
         // setTasks(remove)
     }
@@ -63,7 +64,7 @@ function App() {
 
     // Функция фильтрации тасок
     const filterTasks = (todolistID: string, value: FilterValueType) => {
-       setTodolists(todolists.map(f => f.id === todolistID ? {...f, filter: value} : f))
+        setTodolists(todolists.map(f => f.id === todolistID ? {...f, filter: value} : f))
         // setFilter(value)
     }
 

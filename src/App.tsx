@@ -62,7 +62,8 @@ function App() {
     }
 
     // Функция фильтрации тасок
-    const filterTasks = (todolistID:string,value: FilterValueType) => {
+    const filterTasks = (todolistID: string, value: FilterValueType) => {
+       setTodolists(todolists.map(f => f.id === todolistID ? {...f, filter: value} : f))
         // setFilter(value)
     }
 

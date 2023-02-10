@@ -73,8 +73,8 @@ function App() {
     // let filteredTasks = tasks
 
     // Функция переключения чекбоксов
-    const checkedTask = (todolistID: string,id: string, checked: boolean) => {
-        // setTasks(tasks.map(el => el.id === id ? {...el, isDone: checked} : el))
+    const checkedTask = (todolistID: string, id: string, checked: boolean) => {
+        setTasks({...tasks, [todolistID]: tasks[todolistID].map(el => el.id === id ? {...el, isDone: checked} : el)})
     }
 
     // Возврат JSX элементов

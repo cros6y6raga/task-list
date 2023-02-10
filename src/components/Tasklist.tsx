@@ -8,7 +8,7 @@ interface IPropsType {
     removeTask: (todolistID: string, id: string) => void
     filterTasks: (todolistID: string, value: FilterValueType) => void
     addTask: (todolistID: string, title: string) => void
-    checkedTask: (todolistID: string,id: string, checked: boolean) => void
+    checkedTask: (todolistID: string, id: string, checked: boolean) => void
     filter: FilterValueType
     todolistID: string
 }
@@ -79,7 +79,7 @@ export const Tasklist: React.FC<IPropsType> = (props) => {
                 {props.tasks.map(el => {
                     const onChangeChecked = (e: ChangeEvent<HTMLInputElement>) => {
                         const newIsDone = e.currentTarget.checked
-                        props.checkedTask(props.todolistID,el.id, newIsDone)
+                        props.checkedTask(props.todolistID, el.id, newIsDone)
                     }
                     const removeTaskHandler = () => {
                         props.removeTask(props.todolistID, el.id)

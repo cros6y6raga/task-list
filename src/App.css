@@ -3,6 +3,10 @@ ul {
     padding: 0;
 }
 
+h3 {
+    margin-right: 150px;
+}
+
 button {
     border: none;
     cursor: pointer;
@@ -13,6 +17,7 @@ input {
 }
 
 .App {
+    display: flex;
     margin: 50px;
 }
 

@@ -1,5 +1,6 @@
 import React, {ChangeEvent, KeyboardEvent, useState} from 'react';
 import {FilterValueType} from "../App";
+import {AddItemForm} from "./AddItemForm";
 
 // Типизация пропсов
 interface IPropsType {
@@ -24,31 +25,31 @@ export interface ITaskArray {
 export const Tasklist: React.FC<IPropsType> = (props) => {
 
     // Локальный стейт для инпута и баттона
-    const [title, setTitle] = useState('')
-    const [error, setError] = useState<string | null>(null)
+    // const [title, setTitle] = useState('')
+    // const [error, setError] = useState<string | null>(null)
 
-    // Функция для инпута
-    const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-        setTitle(e.currentTarget.value)
-    }
+    // // Функция для инпута
+    // const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+    //     setTitle(e.currentTarget.value)
+    // }
 
-    // Функция для баттона
-    const onClickAddTaskHandler = () => {
-        if (title.trim() !== '') {
-            props.addTask(props.todolistID, title.trim())
-            setTitle('')
-        } else {
-            setError('Title is required')
-        }
-    }
+    // // Функция для баттона
+    // const onClickAddTaskHandler = () => {
+    //     if (title.trim() !== '') {
+    //         props.addTask(props.todolistID, title.trim())
+    //         setTitle('')
+    //     } else {
+    //         setError('Title is required')
+    //     }
+    // }
 
-    // Функция для добавления таски через Enter
-    const onKeyDownHandler = (e: KeyboardEvent<HTMLInputElement>) => {
-        setError(null)
-        if (e.key === 'Enter') {
-            onClickAddTaskHandler()
-        }
-    }
+    // // Функция для добавления таски через Enter
+    // const onKeyDownHandler = (e: KeyboardEvent<HTMLInputElement>) => {
+    //     setError(null)
+    //     if (e.key === 'Enter') {
+    //         onClickAddTaskHandler()
+    //     }
+    // }
 
     // Функция для фильтрации всех тасок
     const onClickFilterAll = () => {
@@ -69,12 +70,13 @@ export const Tasklist: React.FC<IPropsType> = (props) => {
     return (
         <div>
             <h3>{props.title}</h3>
-            <input className={error ? 'error' : ''}
-                   value={title} onChange={onChangeHandler}
-                   onKeyDown={onKeyDownHandler}
-                   type="text"/>
-            <button className={'button-plus'} onClick={onClickAddTaskHandler}>+</button>
-            {error && <div className={'error-message'}>{error}</div>}
+            <AddItemForm callBack={props.addTask} todolistID={props.todolistID}/>
+            {/*<input className={error ? 'error' : ''}*/}
+            {/*       value={title} onChange={onChangeHandler}*/}
+            {/*       onKeyDown={onKeyDownHandler}*/}
+            {/*       type="text"/>*/}
+            {/*<button className={'button-plus'} onClick={onClickAddTaskHandler}>+</button>*/}
+            {/*{error && <div className={'error-message'}>{error}</div>}*/}
             <ul>
                 {props.tasks.map(el => {
                     const onChangeChecked = (e: ChangeEvent<HTMLInputElement>) => {

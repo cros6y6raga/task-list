@@ -71,12 +71,6 @@ export const Tasklist: React.FC<IPropsType> = (props) => {
         <div>
             <h3>{props.title}</h3>
             <AddItemForm callBack={props.addTask} todolistID={props.todolistID}/>
-            {/*<input className={error ? 'error' : ''}*/}
-            {/*       value={title} onChange={onChangeHandler}*/}
-            {/*       onKeyDown={onKeyDownHandler}*/}
-            {/*       type="text"/>*/}
-            {/*<button className={'button-plus'} onClick={onClickAddTaskHandler}>+</button>*/}
-            {/*{error && <div className={'error-message'}>{error}</div>}*/}
             <ul>
                 {props.tasks.map(el => {
                     const onChangeChecked = (e: ChangeEvent<HTMLInputElement>) => {

@@ -24,33 +24,6 @@ export interface ITaskArray {
 // Отрисовка компаненты, указал в типизации что она функциональная
 export const Tasklist: React.FC<IPropsType> = (props) => {
 
-    // Локальный стейт для инпута и баттона
-    // const [title, setTitle] = useState('')
-    // const [error, setError] = useState<string | null>(null)
-
-    // // Функция для инпута
-    // const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    //     setTitle(e.currentTarget.value)
-    // }
-
-    // // Функция для баттона
-    // const onClickAddTaskHandler = () => {
-    //     if (title.trim() !== '') {
-    //         props.addTask(props.todolistID, title.trim())
-    //         setTitle('')
-    //     } else {
-    //         setError('Title is required')
-    //     }
-    // }
-
-    // // Функция для добавления таски через Enter
-    // const onKeyDownHandler = (e: KeyboardEvent<HTMLInputElement>) => {
-    //     setError(null)
-    //     if (e.key === 'Enter') {
-    //         onClickAddTaskHandler()
-    //     }
-    // }
-
     // Функция для фильтрации всех тасок
     const onClickFilterAll = () => {
         props.filterTasks(props.todolistID, 'all')
@@ -66,11 +39,15 @@ export const Tasklist: React.FC<IPropsType> = (props) => {
         props.filterTasks(props.todolistID, 'completed')
     }
 
+    const addTaskHandler = (title: string) => {
+        props.addTask(props.todolistID, title)
+    }
+
     // Возврат JSX элементов
     return (
         <div>
             <h3>{props.title}</h3>
-            <AddItemForm callBack={props.addTask} todolistID={props.todolistID}/>
+            <AddItemForm callBack={addTaskHandler}/>
             <ul>
                 {props.tasks.map(el => {
                     const onChangeChecked = (e: ChangeEvent<HTMLInputElement>) => {

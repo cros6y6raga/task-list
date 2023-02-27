@@ -71,7 +71,7 @@ function App() {
     // Возврат JSX элементов
     return (
         <div className="App">
-            <AddItemForm callBack={addTodolist} todolistID={'1'}/>
+            <AddItemForm callBack={addTodolist}/>
             {todolists.map((t) => {
                 let filteredTasks = tasks[t.id]
                 if (t.filter === 'active') {

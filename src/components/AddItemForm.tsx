@@ -1,18 +1,18 @@
 import React, {ChangeEvent, KeyboardEvent, useState} from 'react';
 
 type PropsType = {
-    callBack: (todolistID: string, title: string) => void
-    todolistID:string
+    callBack: (title: string) => void
 }
 
-export const AddItemForm = (props:PropsType) => {
+export const AddItemForm = (props: PropsType) => {
     // Локальный стейт для инпута и баттона
     const [title, setTitle] = useState('')
     const [error, setError] = useState<string | null>(null)
     // Функция для баттона
     const onClickAddTaskHandler = () => {
-        if (title.trim() !== '') {
-            props.callBack(props.todolistID, title.trim())
+        let newTitle = title.trim()
+        if (newTitle !== '') {
+            props.callBack(newTitle)
             setTitle('')
         } else {
             setError('Title is required')

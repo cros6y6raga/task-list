@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import './App.css';
 import {Tasklist} from "./components/Tasklist";
 import {v1} from "uuid";
+import {AddItemForm} from "./components/AddItemForm";
 
 // Типизация фильтрации тасок
 export type FilterValueType = 'all' | 'active' | 'completed'
@@ -62,9 +63,15 @@ function App() {
         setTasks({...tasks, [todolistID]: tasks[todolistID].map(el => el.id === id ? {...el, isDone: checked} : el)})
     }
 
+    const addTodolist = (newTitle: string) => {
+        const newTodolist: TodolistsType = {id: todolistID1, title: newTitle, filter: 'all'};
+        setTodolists([...todolists, newTodolist])
+    }
+
     // Возврат JSX элементов
     return (
         <div className="App">
+            <AddItemForm callBack={addTodolist} todolistID={'1'}/>
             {todolists.map((t) => {
                 let filteredTasks = tasks[t.id]
                 if (t.filter === 'active') {

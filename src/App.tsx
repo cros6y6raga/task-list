@@ -64,8 +64,10 @@ function App() {
     }
 
     const addTodolist = (newTitle: string) => {
-        const newTodolist: TodolistsType = {id: todolistID1, title: newTitle, filter: 'all'};
+        const newTodoID = v1()
+        const newTodolist: TodolistsType = {id: newTodoID, title: newTitle, filter: 'all'};
         setTodolists([...todolists, newTodolist])
+        setTasks({[newTodoID]: [], ...tasks})
     }
 
     // Возврат JSX элементов

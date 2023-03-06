@@ -13,6 +13,7 @@ interface IPropsType {
     checkedTask: (todolistID: string, id: string, checked: boolean) => void
     filter: FilterValueType
     todolistID: string
+    editTask:(todolistID: string, taskId: string, newTitle: string)=>void
 }
 
 // Типизация массива tasks
@@ -44,6 +45,8 @@ export const Tasklist: React.FC<IPropsType> = (props) => {
         props.addTask(props.todolistID, title)
     }
 
+
+
     // Возврат JSX элементов
     return (
         <div>
@@ -58,13 +61,16 @@ export const Tasklist: React.FC<IPropsType> = (props) => {
                     const removeTaskHandler = () => {
                         props.removeTask(props.todolistID, el.id)
                     }
+                    const editTaskHandler = (newTitle:string) => {
+                        props.editTask(props.todolistID,el.id,newTitle)
+                    }
                     return (
                         <li key={el.id} className={el.isDone ? 'is-done' : ''}>
                             <button className={'delete'} onClick={removeTaskHandler}>Delete</button>
                             <input className={'checkbox'} type="checkbox" checked={el.isDone}
                                    onChange={onChangeChecked}/>
                             {/*<span>{el.title}</span>*/}
-                            <EditableSpan oldTitle={el.title}/>
+                            <EditableSpan oldTitle={el.title} callBack={editTaskHandler}/>
                         </li>
                     )
                 })}

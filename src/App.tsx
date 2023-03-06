@@ -42,6 +42,15 @@ function App() {
         ]
     });
 
+    const editTask = (todolistID: string, taskId: string, newTitle: string) => {
+        const editVal={...tasks,[todolistID]:tasks[todolistID].map(el=>el.id===taskId ?{...el,title: newTitle} :el)}
+        setTasks(editVal)
+    }
+
+    const editTodo = (todolistID: string, taskId: string, newTask: string) => {
+
+    }
+
     // Функция удаления таски
     const removeTask = (todolistID: string, id: string) => {
         setTasks({...tasks, [todolistID]: tasks[todolistID].filter(f => f.id !== id)})
@@ -93,6 +102,7 @@ function App() {
                         addTask={addTask}
                         checkedTask={checkedTask}
                         filter={t.filter}
+                        editTask={editTask}
                     />
                 )
             })}

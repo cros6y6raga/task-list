@@ -13,7 +13,8 @@ interface IPropsType {
     checkedTask: (todolistID: string, id: string, checked: boolean) => void
     filter: FilterValueType
     todolistID: string
-    editTask:(todolistID: string, taskId: string, newTitle: string)=>void
+    editTask: (todolistID: string, taskId: string, newTitle: string) => void
+    editTodo: (todolistID: string, newTitle: string) => void
 }
 
 // Типизация массива tasks
@@ -45,14 +46,21 @@ export const Tasklist: React.FC<IPropsType> = (props) => {
         props.addTask(props.todolistID, title)
     }
 
-    const editTaskHandler = (tID:string,newTitle:string) => {
-        props.editTask(props.todolistID,tID,newTitle)
+    const editTaskHandler = (tID: string, newTitle: string) => {
+        props.editTask(props.todolistID, tID, newTitle)
+    }
+
+    const editTodoHandler = (newTitle: string) => {
+        props.editTodo(props.todolistID, newTitle)
     }
 
     // Возврат JSX элементов
     return (
         <div>
-            <h3>{props.title}</h3>
+            <h3>
+                {/*{props.title}*/}
+                <EditableSpan oldTitle={props.title} callBack={editTodoHandler}/>
+            </h3>
             <AddItemForm callBack={addTaskHandler}/>
             <ul>
                 {props.tasks.map(el => {
@@ -72,7 +80,8 @@ export const Tasklist: React.FC<IPropsType> = (props) => {
                             <input className={'checkbox'} type="checkbox" checked={el.isDone}
                                    onChange={onChangeChecked}/>
                             {/*<span>{el.title}</span>*/}
-                            <EditableSpan oldTitle={el.title} callBack={(newTitle)=>editTaskHandler(el.id,newTitle)}/>
+                            <EditableSpan oldTitle={el.title}
+                                          callBack={(newTitle) => editTaskHandler(el.id, newTitle)}/>
                         </li>
                     )
                 })}

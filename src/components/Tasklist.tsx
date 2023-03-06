@@ -45,7 +45,9 @@ export const Tasklist: React.FC<IPropsType> = (props) => {
         props.addTask(props.todolistID, title)
     }
 
-
+    const editTaskHandler = (tID:string,newTitle:string) => {
+        props.editTask(props.todolistID,tID,newTitle)
+    }
 
     // Возврат JSX элементов
     return (
@@ -61,16 +63,16 @@ export const Tasklist: React.FC<IPropsType> = (props) => {
                     const removeTaskHandler = () => {
                         props.removeTask(props.todolistID, el.id)
                     }
-                    const editTaskHandler = (newTitle:string) => {
-                        props.editTask(props.todolistID,el.id,newTitle)
-                    }
+                    // const editTaskHandler = (newTitle:string) => {
+                    //     props.editTask(props.todolistID,el.id,newTitle)
+                    // }
                     return (
                         <li key={el.id} className={el.isDone ? 'is-done' : ''}>
                             <button className={'delete'} onClick={removeTaskHandler}>Delete</button>
                             <input className={'checkbox'} type="checkbox" checked={el.isDone}
                                    onChange={onChangeChecked}/>
                             {/*<span>{el.title}</span>*/}
-                            <EditableSpan oldTitle={el.title} callBack={editTaskHandler}/>
+                            <EditableSpan oldTitle={el.title} callBack={(newTitle)=>editTaskHandler(el.id,newTitle)}/>
                         </li>
                     )
                 })}

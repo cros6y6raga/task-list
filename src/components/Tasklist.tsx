@@ -64,7 +64,7 @@ export const Tasklist: React.FC<IPropsType> = (props) => {
                             <input className={'checkbox'} type="checkbox" checked={el.isDone}
                                    onChange={onChangeChecked}/>
                             {/*<span>{el.title}</span>*/}
-                            <EditableSpan title={el.title}/>
+                            <EditableSpan oldTitle={el.title}/>
                         </li>
                     )
                 })}

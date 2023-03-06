@@ -2,7 +2,7 @@ import React, {ChangeEvent, useState} from 'react';
 
 type PropsType = {
     oldTitle: string
-    callBack:(newTitle:string)=>void
+    callBack: (newTitle: string) => void
 }
 export const EditableSpan = (props: PropsType) => {
     const [newTitle, setNewTitle] = useState(props.oldTitle)
@@ -12,8 +12,8 @@ export const EditableSpan = (props: PropsType) => {
         props.callBack(newTitle)
     }
 
-    const onChangeHandler = (e:ChangeEvent<HTMLInputElement>) => {
-      setNewTitle(e.currentTarget.value)
+    const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+        setNewTitle(e.currentTarget.value)
     }
     return (
         edit ? <input onChange={onChangeHandler} value={newTitle} onBlur={editFooHandler} autoFocus/>

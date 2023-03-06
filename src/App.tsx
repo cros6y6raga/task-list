@@ -53,6 +53,11 @@ function App() {
     const editTodo = (todolistID: string, newTask: string) => {
         setTodolists(todolists.map(el => el.id === todolistID ? {...el, title: newTask} : el))
     }
+    
+    const removeTodolist = (todolistID: string) => {
+      setTodolists(todolists.filter(el=>el.id!==todolistID))
+        delete tasks[todolistID]
+    }
 
     // Функция удаления таски
     const removeTask = (todolistID: string, id: string) => {
@@ -107,6 +112,7 @@ function App() {
                         filter={t.filter}
                         editTask={editTask}
                         editTodo={editTodo}
+                        removeTodolist={removeTodolist}
                     />
                 )
             })}

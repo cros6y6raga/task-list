@@ -13,6 +13,7 @@ interface IPropsType {
     checkedTask: (todolistID: string, id: string, checked: boolean) => void
     filter: FilterValueType
     todolistID: string
+    removeTodolist:(todolistID: string)=>void
     editTask: (todolistID: string, taskId: string, newTitle: string) => void
     editTodo: (todolistID: string, newTitle: string) => void
 }
@@ -54,12 +55,17 @@ export const Tasklist: React.FC<IPropsType> = (props) => {
         props.editTodo(props.todolistID, newTitle)
     }
 
+    const removeTodolistHandler = () => {
+      props.removeTodolist(props.todolistID)
+    }
+    
     // Возврат JSX элементов
     return (
         <div>
             <h3>
                 {/*{props.title}*/}
                 <EditableSpan oldTitle={props.title} callBack={editTodoHandler}/>
+                <button onClick={removeTodolistHandler}>x</button>
             </h3>
             <AddItemForm callBack={addTaskHandler}/>
             <ul>

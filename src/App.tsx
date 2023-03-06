@@ -42,6 +42,7 @@ function App() {
         ]
     });
 
+    // Функция изменения таски
     const editTask = (todolistID: string, taskId: string, newTitle: string) => {
         const editVal = {
             ...tasks,
@@ -50,12 +51,14 @@ function App() {
         setTasks(editVal)
     }
 
+    // Функция изменения тудулиста
     const editTodo = (todolistID: string, newTask: string) => {
         setTodolists(todolists.map(el => el.id === todolistID ? {...el, title: newTask} : el))
     }
-    
+
+    // Функция удаления тудулиста
     const removeTodolist = (todolistID: string) => {
-      setTodolists(todolists.filter(el=>el.id!==todolistID))
+        setTodolists(todolists.filter(el => el.id !== todolistID))
         delete tasks[todolistID]
     }
 
@@ -80,6 +83,7 @@ function App() {
         setTasks({...tasks, [todolistID]: tasks[todolistID].map(el => el.id === id ? {...el, isDone: checked} : el)})
     }
 
+    // Функция добавления тудулиста
     const addTodolist = (newTitle: string) => {
         const newTodoID = v1()
         const newTodolist: TodolistsType = {id: newTodoID, title: newTitle, filter: 'all'};

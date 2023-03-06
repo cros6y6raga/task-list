@@ -1,6 +1,7 @@
 import React, {ChangeEvent, KeyboardEvent, useState} from 'react';
 import {FilterValueType} from "../App";
 import {AddItemForm} from "./AddItemForm";
+import {EditableSpan} from "./EditableSpan";
 
 // Типизация пропсов
 interface IPropsType {
@@ -62,7 +63,8 @@ export const Tasklist: React.FC<IPropsType> = (props) => {
                             <button className={'delete'} onClick={removeTaskHandler}>Delete</button>
                             <input className={'checkbox'} type="checkbox" checked={el.isDone}
                                    onChange={onChangeChecked}/>
-                            <span>{el.title}</span>
+                            {/*<span>{el.title}</span>*/}
+                            <EditableSpan title={el.title}/>
                         </li>
                     )
                 })}

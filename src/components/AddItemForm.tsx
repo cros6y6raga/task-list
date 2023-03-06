@@ -5,9 +5,11 @@ type PropsType = {
 }
 
 export const AddItemForm = (props: PropsType) => {
+
     // Локальный стейт для инпута и баттона
     const [title, setTitle] = useState('')
     const [error, setError] = useState<string | null>(null)
+
     // Функция для баттона
     const onClickAddTaskHandler = () => {
         let newTitle = title.trim()
@@ -18,10 +20,12 @@ export const AddItemForm = (props: PropsType) => {
             setError('Title is required')
         }
     }
+
     // Функция для инпута
     const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
         setTitle(e.currentTarget.value)
     }
+
     // Функция для добавления таски через Enter
     const onKeyDownHandler = (e: KeyboardEvent<HTMLInputElement>) => {
         setError(null)

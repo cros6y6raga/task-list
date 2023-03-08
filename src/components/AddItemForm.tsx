@@ -45,12 +45,15 @@ export const AddItemForm = (props: PropsType) => {
                        value={title}
                        onChange={onChangeHandler}
                        onKeyDown={onKeyDownHandler}
-                       className={error ? 'error' : ''}/>
+                //className={error ? 'error' : ''}
+                       error={!!error}
+                       label={'Title'}
+                       helperText={error}
+            />
             {/*<button className={'button-plus'} onClick={onClickAddTaskHandler}>+</button>*/}
             <Button style={{maxWidth: '40px', maxHeight: '40px', minWidth: '40px', minHeight: '40px'}}
                     variant="contained" color='success' size='small' disableElevation
                     onClick={onClickAddTaskHandler}>add</Button>
-            {error && <div className={'error-message'}>{error}</div>}
         </div>
     );
 };

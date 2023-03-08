@@ -5,10 +5,12 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {ThemeProvider, createTheme} from '@mui/material/styles';
 import {green} from "@mui/material/colors";
+import {CssBaseline} from "@mui/material";
 
 const theme = createTheme({
     palette: {
         primary: green,
+        mode:'dark'
     }
 })
 
@@ -18,7 +20,10 @@ const root = ReactDOM.createRoot(
 );
 root.render(
     <React.StrictMode>
-        <ThemeProvider theme={theme}><App/></ThemeProvider>
+        <ThemeProvider theme={theme}>
+            <CssBaseline/>
+            <App/>
+        </ThemeProvider>
 
     </React.StrictMode>
 );

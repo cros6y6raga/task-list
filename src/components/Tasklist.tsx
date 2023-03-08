@@ -2,7 +2,7 @@ import React, {ChangeEvent} from 'react';
 import {FilterValueType} from "../App";
 import {AddItemForm} from "./AddItemForm";
 import {EditableSpan} from "./EditableSpan";
-import {Button, ButtonGroup, IconButton} from "@mui/material";
+import {Button, ButtonGroup, Checkbox, IconButton} from "@mui/material";
 import {Delete} from "@mui/icons-material";
 
 // Типизация пропсов
@@ -91,8 +91,9 @@ export const Tasklist: React.FC<IPropsType> = (props) => {
                             <IconButton onClick={removeTaskHandler} size={'small'} color={'error'}>
                                 <Delete/>
                             </IconButton>
-                            <input className={'checkbox'} type="checkbox" checked={el.isDone}
-                                   onChange={onChangeChecked}/>
+                            {/*<input className={'checkbox'} type="checkbox" checked={el.isDone}*/}
+                            {/*       onChange={onChangeChecked}/>*/}
+                            <Checkbox checked={el.isDone} color={'primary'} onChange={onChangeChecked} size={'small'}/>
                             <EditableSpan oldTitle={el.title}
                                           callBack={(newTitle) => editTaskHandler(el.id, newTitle)}/>
                         </li>

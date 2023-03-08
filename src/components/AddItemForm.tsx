@@ -41,7 +41,8 @@ export const AddItemForm = (props: PropsType) => {
             {/*       value={title} onChange={onChangeHandler}*/}
             {/*       onKeyDown={onKeyDownHandler}*/}
             {/*       type="text"/>*/}
-            <TextField size={'small'}
+            <TextField style={{marginRight:'5px'}}
+                size={'small'}
                        variant='outlined'
                        value={title}
                        onChange={onChangeHandler}

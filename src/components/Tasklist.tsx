@@ -2,7 +2,7 @@ import React, {ChangeEvent} from 'react';
 import {FilterValueType} from "../App";
 import {AddItemForm} from "./AddItemForm";
 import {EditableSpan} from "./EditableSpan";
-import {Button, IconButton} from "@mui/material";
+import {Button, ButtonGroup, IconButton} from "@mui/material";
 import {Delete} from "@mui/icons-material";
 
 // Типизация пропсов
@@ -99,14 +99,16 @@ export const Tasklist: React.FC<IPropsType> = (props) => {
                     )
                 })}
             </ul>
-            <Button sx={{mr: '2px'}} variant={'contained'} disableElevation size={'small'}
+
+            <Button disableElevation size={'small'} variant={'contained'} sx={{mr: '2px'}}
                     color={props.filter === 'all' ? 'success' : 'error'} onClick={onClickFilterAll}>All</Button>
-            <Button sx={{mr: '2px'}} variant={'contained'} disableElevation size={'small'}
+            <Button disableElevation size={'small'} variant={'contained'} sx={{mr: '2px'}}
                     color={props.filter === 'active' ? 'success' : 'error'}
                     onClick={onClickFilterActive}>Active</Button>
-            <Button variant={'contained'} disableElevation size={'small'}
+            <Button disableElevation size={'small'} variant={'contained'}
                     color={props.filter === 'completed' ? 'success' : 'error'}
                     onClick={onClickFilterCompleted}>Completed</Button>
+
         </div>
     );
 };

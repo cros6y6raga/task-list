@@ -1,4 +1,5 @@
 import React, {ChangeEvent, KeyboardEvent, useState} from 'react';
+import {Button} from "@mui/material";
 
 type PropsType = {
     callBack: (title: string) => void
@@ -39,7 +40,8 @@ export const AddItemForm = (props: PropsType) => {
                    value={title} onChange={onChangeHandler}
                    onKeyDown={onKeyDownHandler}
                    type="text"/>
-            <button className={'button-plus'} onClick={onClickAddTaskHandler}>+</button>
+            {/*<button className={'button-plus'} onClick={onClickAddTaskHandler}>+</button>*/}
+            <Button variant="contained" color='success' size='small' onClick={onClickAddTaskHandler}>+</Button>
             {error && <div className={'error-message'}>{error}</div>}
         </div>
     );

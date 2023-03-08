@@ -3,7 +3,7 @@ import './App.css';
 import {Tasklist} from "./components/Tasklist";
 import {v1} from "uuid";
 import {AddItemForm} from "./components/AddItemForm";
-import {AppBar, Button, IconButton, Toolbar, Typography} from "@mui/material";
+import {AppBar, Button, Container, IconButton, Toolbar, Typography} from "@mui/material";
 import {Menu} from "@mui/icons-material";
 
 // Типизация фильтрации тасок
@@ -107,32 +107,35 @@ function App() {
                     <Button color={'inherit'}>Login</Button>
                 </Toolbar>
             </AppBar>
+            <Container fixed>
             <AddItemForm callBack={addTodolist}/>
-            {todolists.map((t) => {
-                let filteredTasks = tasks[t.id]
-                if (t.filter === 'active') {
-                    filteredTasks = tasks[t.id].filter(el => !el.isDone)
-                }
-                if (t.filter === 'completed') {
-                    filteredTasks = tasks[t.id].filter(el => el.isDone)
-                }
-                return (
-                    <Tasklist
-                        key={t.id}
-                        todolistID={t.id}
-                        title={t.title}
-                        tasks={filteredTasks}
-                        removeTask={removeTask}
-                        filterTasks={filterTasks}
-                        addTask={addTask}
-                        checkedTask={checkedTask}
-                        filter={t.filter}
-                        editTask={editTask}
-                        editTodo={editTodo}
-                        removeTodolist={removeTodolist}
-                    />
-                )
-            })}
+                {todolists.map((t) => {
+                    let filteredTasks = tasks[t.id]
+                    if (t.filter === 'active') {
+                        filteredTasks = tasks[t.id].filter(el => !el.isDone)
+                    }
+                    if (t.filter === 'completed') {
+                        filteredTasks = tasks[t.id].filter(el => el.isDone)
+                    }
+                    return (
+                        <Tasklist
+                            key={t.id}
+                            todolistID={t.id}
+                            title={t.title}
+                            tasks={filteredTasks}
+                            removeTask={removeTask}
+                            filterTasks={filterTasks}
+                            addTask={addTask}
+                            checkedTask={checkedTask}
+                            filter={t.filter}
+                            editTask={editTask}
+                            editTodo={editTodo}
+                            removeTodolist={removeTodolist}
+                        />
+                    )
+                })}
+            </Container>
+
         </div>
     );
 }

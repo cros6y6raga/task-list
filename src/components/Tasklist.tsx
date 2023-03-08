@@ -99,9 +99,9 @@ export const Tasklist: React.FC<IPropsType> = (props) => {
                     )
                 })}
             </ul>
-            <Button variant={'contained'} disableElevation size={'small'}
+            <Button sx={{mr: '2px'}} variant={'contained'} disableElevation size={'small'}
                     color={props.filter === 'all' ? 'success' : 'error'} onClick={onClickFilterAll}>All</Button>
-            <Button variant={'contained'} disableElevation size={'small'}
+            <Button sx={{mr: '2px'}} variant={'contained'} disableElevation size={'small'}
                     color={props.filter === 'active' ? 'success' : 'error'}
                     onClick={onClickFilterActive}>Active</Button>
             <Button variant={'contained'} disableElevation size={'small'}

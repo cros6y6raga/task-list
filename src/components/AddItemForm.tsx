@@ -1,6 +1,5 @@
 import React, {ChangeEvent, KeyboardEvent, useState} from 'react';
-import {Button, IconButton, TextField} from "@mui/material";
-import {AddBox} from "@mui/icons-material";
+import {Button, TextField} from "@mui/material";
 
 type PropsType = {
     callBack: (title: string) => void
@@ -41,8 +40,8 @@ export const AddItemForm = (props: PropsType) => {
             {/*       value={title} onChange={onChangeHandler}*/}
             {/*       onKeyDown={onKeyDownHandler}*/}
             {/*       type="text"/>*/}
-            <TextField style={{marginRight:'5px'}}
-                size={'small'}
+            <TextField style={{marginRight: '5px'}}
+                       size={'small'}
                        variant='outlined'
                        value={title}
                        onChange={onChangeHandler}

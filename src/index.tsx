@@ -10,10 +10,9 @@ import {CssBaseline} from "@mui/material";
 const theme = createTheme({
     palette: {
         primary: green,
-        mode:'dark'
+        mode: 'dark'
     }
 })
-
 
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
@@ -24,7 +23,6 @@ root.render(
             <CssBaseline/>
             <App/>
         </ThemeProvider>
-
     </React.StrictMode>
 );
 

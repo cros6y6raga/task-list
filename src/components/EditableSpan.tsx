@@ -19,7 +19,7 @@ export const EditableSpan = (props: PropsType) => {
     return (
         edit ?
             <TextField size={'small'}
-                variant='standard'
+                       variant='standard'
                        value={newTitle}
                        onChange={onChangeHandler}
                        onBlur={editFooHandler}

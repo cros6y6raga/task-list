@@ -120,7 +120,7 @@ function App() {
                         if (t.filter === 'completed') {
                             filteredTasks = tasks[t.id].filter(el => el.isDone)
                         }
-                        return (<Grid item>
+                        return (<Grid key={t.id} item>
                                 <Paper style={{padding: '10px'}}>
                                     <Tasklist
                                         key={t.id}

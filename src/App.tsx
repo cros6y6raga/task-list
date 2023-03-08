@@ -3,6 +3,8 @@ import './App.css';
 import {Tasklist} from "./components/Tasklist";
 import {v1} from "uuid";
 import {AddItemForm} from "./components/AddItemForm";
+import {AppBar, Button, IconButton, Toolbar, Typography} from "@mui/material";
+import {Menu} from "@mui/icons-material";
 
 // Типизация фильтрации тасок
 export type FilterValueType = 'all' | 'active' | 'completed'
@@ -94,6 +96,17 @@ function App() {
     // Возврат JSX элементов
     return (
         <div className="App">
+            <AppBar position="static">
+                <Toolbar>
+                    <IconButton edge="start" color="inherit" aria-label="menu">
+                        <Menu/>
+                    </IconButton>
+                    <Typography variant="h6">
+                        Tasklist
+                    </Typography>
+                    <Button color={'inherit'}>Login</Button>
+                </Toolbar>
+            </AppBar>
             <AddItemForm callBack={addTodolist}/>
             {todolists.map((t) => {
                 let filteredTasks = tasks[t.id]

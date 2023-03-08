@@ -1,53 +1,53 @@
-ul {
-    list-style: none;
-    padding: 0;
-}
+/*ul {*/
+/*    list-style: none;*/
+/*    padding: 0;*/
+/*}*/
 
-h3 {
-    margin-right: 150px;
-}
+/*h3 {*/
+/*    margin-right: 150px;*/
+/*}*/
 
-button {
-    border: none;
-    cursor: pointer;
-}
+/*button {*/
+/*    border: none;*/
+/*    cursor: pointer;*/
+/*}*/
 
-input {
-    margin-right: 5px;
-}
+/*input {*/
+/*    margin-right: 5px;*/
+/*}*/
 
-.App {
-    display: flex;
-    margin: 50px;
-}
+/*.App {*/
+/*    display: flex;*/
+/*    margin: 50px;*/
+/*}*/
 
-.error {
-    border: red 2px solid;
-}
+/*.error {*/
+/*    border: red 2px solid;*/
+/*}*/
 
-.error-message {
-    color: red;
-}
+/*.error-message {*/
+/*    color: red;*/
+/*}*/
 
-.active-filter {
-    background-color: green;
-}
+/*.active-filter {*/
+/*    background-color: green;*/
+/*}*/
 
-.is-done {
-    opacity: 0.5;
-    text-decoration: line-through;
-}
+/*.is-done {*/
+/*    opacity: 0.5;*/
+/*    text-decoration: line-through;*/
+/*}*/
 
-.delete {
-    background-color: red;
-}
+/*.delete {*/
+/*    background-color: red;*/
+/*}*/
 
-.checkbox {
-    cursor: pointer;
-}
+/*.checkbox {*/
+/*    cursor: pointer;*/
+/*}*/
 
-.button-plus {
-    background-color: green;
-    width: 22px;
-    height: 22px;
-}
+/*.button-plus {*/
+/*    background-color: green;*/
+/*    width: 22px;*/
+/*    height: 22px;*/
+/*}*/

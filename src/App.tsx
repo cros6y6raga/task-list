@@ -3,7 +3,7 @@ import './App.css';
 import {Tasklist} from "./components/Tasklist";
 import {v1} from "uuid";
 import {AddItemForm} from "./components/AddItemForm";
-import {AppBar, Button, Container, Grid, IconButton, Toolbar, Typography} from "@mui/material";
+import {AppBar, Button, Container, Grid, IconButton, Paper, Toolbar, Typography} from "@mui/material";
 import {Menu} from "@mui/icons-material";
 
 // Типизация фильтрации тасок
@@ -108,7 +108,7 @@ function App() {
                 </Toolbar>
             </AppBar>
             <Container fixed>
-                <Grid container>
+                <Grid container style={{padding: '20px'}}>
                     <AddItemForm callBack={addTodolist}/>
                 </Grid>
                 <Grid container spacing={3}>
@@ -121,20 +121,22 @@ function App() {
                             filteredTasks = tasks[t.id].filter(el => el.isDone)
                         }
                         return (<Grid item>
-                                <Tasklist
-                                    key={t.id}
-                                    todolistID={t.id}
-                                    title={t.title}
-                                    tasks={filteredTasks}
-                                    removeTask={removeTask}
-                                    filterTasks={filterTasks}
-                                    addTask={addTask}
-                                    checkedTask={checkedTask}
-                                    filter={t.filter}
-                                    editTask={editTask}
-                                    editTodo={editTodo}
-                                    removeTodolist={removeTodolist}
-                                />
+                                <Paper style={{padding: '10px'}}>
+                                    <Tasklist
+                                        key={t.id}
+                                        todolistID={t.id}
+                                        title={t.title}
+                                        tasks={filteredTasks}
+                                        removeTask={removeTask}
+                                        filterTasks={filterTasks}
+                                        addTask={addTask}
+                                        checkedTask={checkedTask}
+                                        filter={t.filter}
+                                        editTask={editTask}
+                                        editTodo={editTodo}
+                                        removeTodolist={removeTodolist}
+                                    />
+                                </Paper>
                             </Grid>
                         )
                     })}
@@ -145,4 +147,4 @@ function App() {
     );
 }
 
-    export default App;
+export default App;

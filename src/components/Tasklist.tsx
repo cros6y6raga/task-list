@@ -2,6 +2,8 @@ import React, {ChangeEvent} from 'react';
 import {FilterValueType} from "../App";
 import {AddItemForm} from "./AddItemForm";
 import {EditableSpan} from "./EditableSpan";
+import {IconButton} from "@mui/material";
+import {Delete} from "@mui/icons-material";
 
 // Типизация пропсов
 interface IPropsType {
@@ -68,7 +70,10 @@ export const Tasklist: React.FC<IPropsType> = (props) => {
         <div>
             <h3>
                 <EditableSpan oldTitle={props.title} callBack={editTodoHandler}/>
-                <button onClick={removeTodolistHandler}>x</button>
+                {/*<button onClick={removeTodolistHandler}>x</button>*/}
+                <IconButton onClick={removeTodolistHandler}>
+                    <Delete/>
+                </IconButton>
             </h3>
             <AddItemForm callBack={addTaskHandler}/>
             <ul>

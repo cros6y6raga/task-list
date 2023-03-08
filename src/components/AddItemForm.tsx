@@ -41,7 +41,9 @@ export const AddItemForm = (props: PropsType) => {
                    onKeyDown={onKeyDownHandler}
                    type="text"/>
             {/*<button className={'button-plus'} onClick={onClickAddTaskHandler}>+</button>*/}
-            <Button variant="contained" color='success' size='small' onClick={onClickAddTaskHandler}>+</Button>
+            <Button style={{maxWidth: '30px', maxHeight: '25px', minWidth: '30px', minHeight: '25px'}}
+                    variant="contained" color='success' size='small' disableElevation
+                    onClick={onClickAddTaskHandler}>+</Button>
             {error && <div className={'error-message'}>{error}</div>}
         </div>
     );

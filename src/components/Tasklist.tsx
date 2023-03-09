@@ -70,7 +70,6 @@ export const Tasklist: React.FC<IPropsType> = (props) => {
         <div>
             <h3>
                 <EditableSpan oldTitle={props.title} callBack={editTodoHandler}/>
-                {/*<button onClick={removeTodolistHandler}>x</button>*/}
                 <IconButton onClick={removeTodolistHandler} size={'small'} color={'error'}>
                     <Delete/>
                 </IconButton>
@@ -87,12 +86,9 @@ export const Tasklist: React.FC<IPropsType> = (props) => {
                     }
                     return (
                         <li key={el.id} className={el.isDone ? 'is-done' : ''}>
-                            {/*<button className={'delete'} onClick={removeTaskHandler}>Delete</button>*/}
                             <IconButton onClick={removeTaskHandler} size={'small'} color={'error'}>
                                 <Delete/>
                             </IconButton>
-                            {/*<input className={'checkbox'} type="checkbox" checked={el.isDone}*/}
-                            {/*       onChange={onChangeChecked}/>*/}
                             <Checkbox checked={el.isDone} color={'primary'} onChange={onChangeChecked} size={'small'}/>
                             <EditableSpan oldTitle={el.title}
                                           callBack={(newTitle) => editTaskHandler(el.id, newTitle)}/>
@@ -100,7 +96,6 @@ export const Tasklist: React.FC<IPropsType> = (props) => {
                     )
                 })}
             </ul>
-
             <Button disableElevation size={'small'} variant={'contained'} sx={{mr: '2px'}}
                     color={props.filter === 'all' ? 'success' : 'error'} onClick={onClickFilterAll}>All</Button>
             <Button disableElevation size={'small'} variant={'contained'} sx={{mr: '2px'}}
@@ -109,7 +104,6 @@ export const Tasklist: React.FC<IPropsType> = (props) => {
             <Button disableElevation size={'small'} variant={'contained'}
                     color={props.filter === 'completed' ? 'success' : 'error'}
                     onClick={onClickFilterCompleted}>Completed</Button>
-
         </div>
     );
 };

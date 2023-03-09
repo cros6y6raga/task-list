@@ -25,7 +25,6 @@ export const EditableSpan = (props: PropsType) => {
                        onBlur={editFooHandler}
                        autoFocus
             />
-            //<input onChange={onChangeHandler} value={newTitle} onBlur={editFooHandler} autoFocus/>
             : <span onDoubleClick={editFooHandler}>{props.oldTitle}</span>
     );
 };

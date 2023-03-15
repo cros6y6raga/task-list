@@ -6,10 +6,10 @@ import {AddItemForm} from "./components/AddItemForm";
 import {AppBar, Button, Container, Grid, IconButton, Paper, Toolbar, Typography} from "@mui/material";
 import {Menu} from "@mui/icons-material";
 
-// Типизация фильтрации тасок
+// Typing of filtering tasks
 export type FilterValueType = 'all' | 'active' | 'completed'
 
-// Типизация ассоциативного массива
+// Typing an associative array
 export type TodolistsType = {
     id: string
     title: string
@@ -18,7 +18,7 @@ export type TodolistsType = {
 
 function App() {
 
-    //Ассоциативный массив (или объект)
+    //Associate array (or object)
     let todolistID1 = v1();
     let todolistID2 = v1();
 
@@ -44,7 +44,7 @@ function App() {
         ]
     });
 
-    // Функция изменения таски
+    // Change task function
     const editTask = (todolistID: string, taskId: string, newTitle: string) => {
         const editVal = {
             ...tasks,
@@ -53,39 +53,39 @@ function App() {
         setTasks(editVal)
     }
 
-    // Функция изменения тудулиста
+    // Change todolist function
     const editTodo = (todolistID: string, newTask: string) => {
         setTodolists(todolists.map(el => el.id === todolistID ? {...el, title: newTask} : el))
     }
 
-    // Функция удаления тудулиста
+    // Delete function todolist
     const removeTodolist = (todolistID: string) => {
         setTodolists(todolists.filter(el => el.id !== todolistID))
         delete tasks[todolistID]
     }
 
-    // Функция удаления таски
+    // Delete task function
     const removeTask = (todolistID: string, id: string) => {
         setTasks({...tasks, [todolistID]: tasks[todolistID].filter(f => f.id !== id)})
     }
 
-    // Функция добавления таски
+    // Add a task function
     const addTask = (todolistID: string, title: string) => {
         let newTask = {id: v1(), title: title, isDone: false}
         setTasks({...tasks, [todolistID]: [newTask, ...tasks[todolistID]]})
     }
 
-    // Функция фильтрации тасок
+    // Filter function tasks
     const filterTasks = (todolistID: string, value: FilterValueType) => {
         setTodolists(todolists.map(el => el.id === todolistID ? {...el, filter: value} : el))
     }
 
-    // Функция переключения чекбоксов
+    // Checkbox switching function
     const checkedTask = (todolistID: string, id: string, checked: boolean) => {
         setTasks({...tasks, [todolistID]: tasks[todolistID].map(el => el.id === id ? {...el, isDone: checked} : el)})
     }
 
-    // Функция добавления тудулиста
+    // Adding a todolist Function
     const addTodolist = (newTitle: string) => {
         const newTodoID = v1()
         const newTodolist: TodolistsType = {id: newTodoID, title: newTitle, filter: 'all'};
@@ -93,7 +93,7 @@ function App() {
         setTasks({[newTodoID]: [], ...tasks})
     }
 
-    // Возврат JSX элементов
+    // Return JSX elements
     return (
         <div className="App">
             <AppBar position="static">

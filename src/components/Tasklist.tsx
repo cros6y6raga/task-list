@@ -5,7 +5,7 @@ import {EditableSpan} from "./EditableSpan";
 import {Button, Checkbox, IconButton} from "@mui/material";
 import {Delete} from "@mui/icons-material";
 
-// Типизация пропсов
+// Typing of props
 interface IPropsType {
     title: string
     tasks: ITaskArray[]
@@ -20,52 +20,52 @@ interface IPropsType {
     editTodo: (todolistID: string, newTitle: string) => void
 }
 
-// Типизация массива tasks
+// Typing an array of tasks
 export interface ITaskArray {
     id: string
     title: string
     isDone: boolean
 }
 
-// Отрисовка компаненты, указал в типизации что она функциональная
+// Drawing a component, I indicated in the typing that it is functional
 export const Tasklist: React.FC<IPropsType> = (props) => {
 
-    // Функция для фильтрации всех тасок
+    // Function to filter all tasks
     const onClickFilterAll = () => {
         props.filterTasks(props.todolistID, 'all')
     }
 
-    // Функция для фильтрации активных тасок
+    // Function to filter active tasks
     const onClickFilterActive = () => {
         props.filterTasks(props.todolistID, 'active')
     }
 
-    // Функция для фильтрации выполненных тасок
+    // Function for filtering completed tasks
     const onClickFilterCompleted = () => {
         props.filterTasks(props.todolistID, 'completed')
     }
 
-    // Функция для добавления тасок
+    // Function for adding tasks
     const addTaskHandler = (title: string) => {
         props.addTask(props.todolistID, title)
     }
 
-    // Функция для изменения тасок
+    // Function for changing tasks
     const editTaskHandler = (tID: string, newTitle: string) => {
         props.editTask(props.todolistID, tID, newTitle)
     }
 
-    // Функция для изменения тудулиста
+    // Function for changing todolist
     const editTodoHandler = (newTitle: string) => {
         props.editTodo(props.todolistID, newTitle)
     }
 
-    // Функция для удаления тудулиста
+    // Function to remove todolist
     const removeTodolistHandler = () => {
         props.removeTodolist(props.todolistID)
     }
 
-    // Возврат JSX элементов
+    // Return JSX elements
     return (
         <div>
             <h3>

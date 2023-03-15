@@ -7,11 +7,11 @@ type PropsType = {
 
 export const AddItemForm = (props: PropsType) => {
 
-    // Локальный стейт для инпута и баттона
+    // The local stack for the input and the batton
     const [title, setTitle] = useState('')
     const [error, setError] = useState<string | null>(null)
 
-    // Функция для баттона
+    // Function for the Button
     const onClickAddTaskHandler = () => {
         let newTitle = title.trim()
         if (newTitle !== '') {
@@ -22,12 +22,12 @@ export const AddItemForm = (props: PropsType) => {
         }
     }
 
-    // Функция для инпута
+    // Function for input
     const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
         setTitle(e.currentTarget.value)
     }
 
-    // Функция для добавления таски через Enter
+    // Function for adding a task via Enter
     const onKeyDownHandler = (e: KeyboardEvent<HTMLInputElement>) => {
         setError(null)
         if (e.key === 'Enter') {

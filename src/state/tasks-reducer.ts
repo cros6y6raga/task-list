@@ -12,14 +12,16 @@ export const todolistsReducer = (state: TasksStateType, action: MainType) => {
     }
 };
 
-type MainType = FirstActionType | SecondActionType
+type MainType = RemoveTaskActionType | SecondActionType
 
-type FirstActionType = ReturnType<typeof firstAC>
+type RemoveTaskActionType = ReturnType<typeof removeTaskAC>
 type SecondActionType = ReturnType<typeof secondAC>
 
-export const firstAC = (id: string) => {
+export const removeTaskAC = (taskId: string,todolistId:string) => {
     return {
-        type: '',
+        type: 'REMOVE-TASK',
+        taskId,
+        todolistId
     } as const
 }
 

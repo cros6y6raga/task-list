@@ -16,6 +16,7 @@ export type TodolistsType = {
     filter: FilterValueType
 }
 
+// Typing an associative array
 export type TasksStateType = {
     [key: string]: Array<ITaskArray>
 }

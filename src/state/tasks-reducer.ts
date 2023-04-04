@@ -18,10 +18,11 @@ export const tasksReducer = (state: TasksStateType, action: MainType) => {
     }
 };
 
-type MainType = RemoveTaskActionType | AddTaskActionType
+type MainType = RemoveTaskActionType | AddTaskActionType | ChangeTaskActionType
 
 type RemoveTaskActionType = ReturnType<typeof removeTaskAC>
 type AddTaskActionType = ReturnType<typeof addTaskAC>
+type ChangeTaskActionType = ReturnType<typeof changeTaskStatusAC>
 
 export const removeTaskAC = (taskId: string, todolistId: string) => {
     return {
@@ -39,7 +40,7 @@ export const addTaskAC = (title: string, todolistId: string) => {
     } as const
 }
 
-export const changeTaskStatusAC = (taskId: string,isDone: boolean, todolistId: string) => {
+export const changeTaskStatusAC = (taskId: string, isDone: boolean, todolistId: string) => {
     return {
         type: 'CHANGE-STATUS-TASK',
         taskId,

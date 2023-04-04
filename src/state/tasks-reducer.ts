@@ -33,14 +33,25 @@ export const tasksReducer = (state: TasksStateType, action: MainType) => {
         case 'ADD-TODOLIST':
             return {
                 ...state,
-             [action.payload.todolistID]:[]
+                [action.payload.todolistID]: []
             }
+        case 'REMOVE-TODOLIST': {
+            const copyState = {...state}
+            delete copyState[action.payload.id]
+            return copyState
+        }
         default:
             throw new Error('I dont understand this type')
     }
 };
 
-type MainType = RemoveTaskActionType | AddTaskActionType | ChangeTaskStatusActionType | ChangeTaskTitleActionType | addTodolistACType | removeTodolistACType
+type MainType =
+    RemoveTaskActionType
+    | AddTaskActionType
+    | ChangeTaskStatusActionType
+    | ChangeTaskTitleActionType
+    | addTodolistACType
+    | removeTodolistACType
 
 type RemoveTaskActionType = ReturnType<typeof removeTaskAC>
 type AddTaskActionType = ReturnType<typeof addTaskAC>

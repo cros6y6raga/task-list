@@ -22,12 +22,12 @@ export const todolistsReducer = (state: Array<TodolistsType>, action: MainType) 
     }
 };
 
-type MainType = removeTodolistACType | addTodolistACType | editTodoACType | filterTasksACType
+export type MainType = removeTodolistACType | addTodolistACType | editTodoACType | filterTasksACType
 
-type removeTodolistACType = ReturnType<typeof removeTodolistAC>
-type addTodolistACType = ReturnType<typeof addTodolistAC>
-type editTodoACType = ReturnType<typeof editTodoAC>
-type filterTasksACType = ReturnType<typeof filterTasksAC>
+export type removeTodolistACType = ReturnType<typeof removeTodolistAC>
+export type addTodolistACType = ReturnType<typeof addTodolistAC>
+export type editTodoACType = ReturnType<typeof editTodoAC>
+export type filterTasksACType = ReturnType<typeof filterTasksAC>
 
 export const removeTodolistAC = (id: string) => {
     return {

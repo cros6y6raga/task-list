@@ -8,17 +8,17 @@ export const tasksReducer = (state: TasksStateType, action: MainType) => {
                 ...state,
                 [action.todolistId]: state[action.todolistId].filter(t => t.id !== action.taskId)
             }
-        case '':
+        case 'ADD-TASK':
             return state
         default:
             throw new Error('I dont understand this type')
     }
 };
 
-type MainType = RemoveTaskActionType | SecondActionType
+type MainType = RemoveTaskActionType | AddTaskActionType
 
 type RemoveTaskActionType = ReturnType<typeof removeTaskAC>
-type SecondActionType = ReturnType<typeof secondAC>
+type AddTaskActionType = ReturnType<typeof addTaskAC>
 
 export const removeTaskAC = (taskId: string, todolistId: string) => {
     return {
@@ -28,8 +28,10 @@ export const removeTaskAC = (taskId: string, todolistId: string) => {
     } as const
 }
 
-export const secondAC = (title: string) => {
+export const addTaskAC = (title: string, todolistId:string) => {
     return {
-        type: '',
+        type: 'ADD-TASK',
+        title,
+        todolistId
     } as const
 }

@@ -21,6 +21,14 @@ export const tasksReducer = (state: TasksStateType, action: MainType) => {
                     isDone: action.isDone
                 } : t)
             }
+        case 'CHANGE-TITLE-TASK':
+            return {
+                ...state,
+                [action.todolistId]: state[action.todolistId].map(t => t.id === action.taskId ? {
+                    ...t,
+                    title: action.title
+                } : t)
+            }
         default:
             throw new Error('I dont understand this type')
     }

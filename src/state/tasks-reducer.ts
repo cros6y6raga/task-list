@@ -30,6 +30,11 @@ export const tasksReducer = (state: TasksStateType, action: MainType) => {
                     title: action.title
                 } : t)
             }
+        case 'ADD-TODOLIST':
+            return {
+                ...state,
+             [action.payload.todolistID]:[]
+            }
         default:
             throw new Error('I dont understand this type')
     }

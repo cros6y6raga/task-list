@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import './App.css';
-import {Tasklist} from "./components/Tasklist";
+import {ITaskArray, Tasklist} from "./components/Tasklist";
 import {v1} from "uuid";
 import {AddItemForm} from "./components/AddItemForm";
 import {AppBar, Button, Container, Grid, IconButton, Paper, Toolbar, Typography} from "@mui/material";
@@ -16,6 +16,10 @@ export type TodolistsType = {
     filter: FilterValueType
 }
 
+export type TasksStateType = {
+    [key: string]: Array<ITaskArray>
+}
+
 function App() {
 
     //Associate array (or object)
@@ -27,7 +31,7 @@ function App() {
         {id: todolistID2, title: 'What to buy', filter: 'all'},
     ])
 
-    let [tasks, setTasks] = useState({
+    let [tasks, setTasks] = useState<TasksStateType>({
         [todolistID1]: [
             {id: v1(), title: "HTML&CSS", isDone: true},
             {id: v1(), title: "JS", isDone: true},

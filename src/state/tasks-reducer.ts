@@ -38,3 +38,12 @@ export const addTaskAC = (title: string, todolistId: string) => {
         todolistId
     } as const
 }
+
+export const changeTaskStatusAC = (taskId: string,isDone: boolean, todolistId: string) => {
+    return {
+        type: 'CHANGE-STATUS-TASK',
+        taskId,
+        isDone,
+        todolistId
+    } as const
+}

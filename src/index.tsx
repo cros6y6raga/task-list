@@ -6,6 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import {ThemeProvider, createTheme} from '@mui/material/styles';
 import {green} from "@mui/material/colors";
 import {CssBaseline} from "@mui/material";
+import AppWithReducers from "./AppWithReducers";
 
 const theme = createTheme({
     palette: {
@@ -21,7 +22,7 @@ root.render(
     <React.StrictMode>
         <ThemeProvider theme={theme}>
             <CssBaseline/>
-            <App/>
+            <AppWithReducers/>
         </ThemeProvider>
     </React.StrictMode>
 );

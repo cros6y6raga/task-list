@@ -7,6 +7,9 @@ import {ThemeProvider, createTheme} from '@mui/material/styles';
 import {green} from "@mui/material/colors";
 import {CssBaseline} from "@mui/material";
 import AppWithReducers from "./AppWithReducers";
+import AppWithRedux from "./AppWithRedux";
+import {Provider} from "react-redux";
+import {store} from "./state/store";
 
 const theme = createTheme({
     palette: {
@@ -22,7 +25,9 @@ root.render(
     <React.StrictMode>
         <ThemeProvider theme={theme}>
             <CssBaseline/>
-            <AppWithReducers/>
+            <Provider store={store}>
+                <AppWithRedux/>
+            </Provider>
         </ThemeProvider>
     </React.StrictMode>
 );

@@ -29,7 +29,7 @@ export const AddItemForm = (props: PropsType) => {
 
     // Function for adding a task via Enter
     const onKeyDownHandler = (e: KeyboardEvent<HTMLInputElement>) => {
-        setError(null)
+        if (error) setError(null)
         if (e.key === 'Enter') {
             onClickAddTaskHandler()
         }

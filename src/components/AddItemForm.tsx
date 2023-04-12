@@ -1,11 +1,11 @@
-import React, {ChangeEvent, KeyboardEvent, useState} from 'react';
+import React, {ChangeEvent, KeyboardEvent, memo, useState} from 'react';
 import {Button, TextField} from "@mui/material";
 
 type PropsType = {
     callBack: (title: string) => void
 }
 
-export const AddItemForm = (props: PropsType) => {
+export const AddItemForm = memo((props: PropsType) => {
 
     // The local stack for the input and the batton
     const [title, setTitle] = useState('')
@@ -51,4 +51,4 @@ export const AddItemForm = (props: PropsType) => {
                     onClick={onClickAddTaskHandler}>add</Button>
         </div>
     );
-};
+});

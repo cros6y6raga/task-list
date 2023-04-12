@@ -1,4 +1,4 @@
-import React, {Reducer, useReducer, useState} from 'react';
+import React, {Reducer, useCallback, useReducer, useState} from 'react';
 import './App.css';
 import {ITaskArray, Tasklist} from "./components/Tasklist";
 import {v1} from "uuid";
@@ -75,10 +75,10 @@ function AppWithRedux() {
     }
 
     // Add a task function
-    const addTask = (todolistID: string, title: string) => {
+    const addTask = useCallback((todolistID: string, title: string) => {
         let action = addTaskAC(title,todolistID)
         dispatch(action)
-    }
+    },[dispatch])
 
     // Filter function tasks
     const filterTasks = (todolistID: string, value: FilterValueType) => {
@@ -92,10 +92,10 @@ function AppWithRedux() {
     }
 
     // Adding a todolist Function
-    const addTodolist = (newTitle: string) => {
+    const addTodolist = useCallback((newTitle: string) => {
         const action =addTodolistAC(newTitle)
         dispatch(action)
-    }
+    },[dispatch])
 
     // Return JSX elements
     return (

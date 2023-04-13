@@ -4,9 +4,10 @@ import {AddItemForm} from "./AddItemForm";
 import {EditableSpan} from "./EditableSpan";
 import {Button, Checkbox, IconButton} from "@mui/material";
 import {Delete} from "@mui/icons-material";
+import {Task} from "../Task";
 
 // Typing of props
-interface IPropsType {
+export interface IPropsType {
     title: string
     tasks: ITaskArray[]
     removeTask: (todolistID: string, id: string) => void
@@ -32,22 +33,22 @@ export const Tasklist: React.FC<IPropsType> = memo((props) => {
     // Function to filter all tasks
     const onClickFilterAll = useCallback(() => {
         props.filterTasks(props.todolistID, 'all')
-    },[props.filterTasks, props.todolistID])
+    }, [props.filterTasks, props.todolistID])
 
     // Function to filter active tasks
     const onClickFilterActive = useCallback(() => {
         props.filterTasks(props.todolistID, 'active')
-    },[props.filterTasks, props.todolistID])
+    }, [props.filterTasks, props.todolistID])
 
     // Function for filtering completed tasks
     const onClickFilterCompleted = useCallback(() => {
         props.filterTasks(props.todolistID, 'completed')
-    },[props.filterTasks, props.todolistID])
+    }, [props.filterTasks, props.todolistID])
 
     // Function for adding tasks
     const addTaskHandler = useCallback((title: string) => {
         props.addTask(props.todolistID, title)
-    },[props.addTask,props.todolistID])
+    }, [props.addTask, props.todolistID])
 
     // Function for changing tasks
     const editTaskHandler = (tID: string, newTitle: string) => {
@@ -55,9 +56,9 @@ export const Tasklist: React.FC<IPropsType> = memo((props) => {
     }
 
     // Function for changing todolist
-    const editTodoHandler = (newTitle: string) => {
+    const editTodoHandler = useCallback((newTitle: string) => {
         props.editTodo(props.todolistID, newTitle)
-    }
+    }, [props.editTodo, props.todolistID])
 
     // Function to remove todolist
     const removeTodolistHandler = () => {
@@ -70,6 +71,17 @@ export const Tasklist: React.FC<IPropsType> = memo((props) => {
     if (props.filter === 'completed') {
         tasks = tasks.filter(el => el.isDone)
     }
+
+    const checkedTask = useCallback((taskId: string, newIsDone: boolean) => {
+        props.checkedTask(props.todolistID, taskId, newIsDone)
+    }, [props.todolistID, props.checkedTask])
+    const removeTask = useCallback((taskId: string) => {
+        props.removeTask(props.todolistID, taskId)
+    }, [props.todolistID, props.removeTask])
+    const editTask = useCallback((taskId: string, newTitle: string) => {
+        props.editTask(props.todolistID, taskId, newTitle)
+    }, [props.todolistID, props.editTask])
+
     // Return JSX elements
     return (
         <div>
@@ -82,22 +94,14 @@ export const Tasklist: React.FC<IPropsType> = memo((props) => {
             <AddItemForm callBack={addTaskHandler}/>
             <ul>
                 {tasks.map(el => {
-                    const onChangeChecked = (e: ChangeEvent<HTMLInputElement>) => {
-                        const newIsDone = e.currentTarget.checked
-                        props.checkedTask(props.todolistID, el.id, newIsDone)
-                    }
-                    const removeTaskHandler = () => {
-                        props.removeTask(props.todolistID, el.id)
-                    }
+
                     return (
-                        <li key={el.id} className={el.isDone ? 'is-done' : ''}>
-                            <IconButton onClick={removeTaskHandler} size={'small'} color={'error'}>
-                                <Delete/>
-                            </IconButton>
-                            <Checkbox checked={el.isDone} color={'primary'} onChange={onChangeChecked} size={'small'}/>
-                            <EditableSpan oldTitle={el.title}
-                                          callBack={(newTitle) => editTaskHandler(el.id, newTitle)}/>
-                        </li>
+                        <Task
+                            key={el.id}
+                            task={el}
+                            checkedTask={checkedTask}
+                            editTask={editTask}
+                            removeTask={removeTask}/>
                     )
                 })}
             </ul>

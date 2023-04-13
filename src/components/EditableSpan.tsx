@@ -1,11 +1,11 @@
-import React, {ChangeEvent, useState} from 'react';
+import React, {ChangeEvent, memo, useState} from 'react';
 import {TextField} from "@mui/material";
 
 type PropsType = {
     oldTitle: string
     callBack: (newTitle: string) => void
 }
-export const EditableSpan = (props: PropsType) => {
+export const EditableSpan = memo((props: PropsType) => {
     const [newTitle, setNewTitle] = useState(props.oldTitle)
     const [edit, setEdit] = useState(false)
     const editFooHandler = () => {
@@ -27,4 +27,4 @@ export const EditableSpan = (props: PropsType) => {
             />
             : <span onDoubleClick={editFooHandler}>{props.oldTitle}</span>
     );
-};
+});

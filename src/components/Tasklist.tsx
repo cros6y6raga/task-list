@@ -29,7 +29,6 @@ export interface ITaskArray {
 
 // Drawing a component, I indicated in the typing that it is functional
 export const Tasklist: React.FC<IPropsType> = memo((props) => {
-    console.log('13')
     // Function to filter all tasks
     const onClickFilterAll = () => {
         props.filterTasks(props.todolistID, 'all')
@@ -64,7 +63,13 @@ export const Tasklist: React.FC<IPropsType> = memo((props) => {
     const removeTodolistHandler = () => {
         props.removeTodolist(props.todolistID)
     }
-
+    let tasks = props.tasks
+    if (props.filter === 'active') {
+        tasks = tasks.filter(el => !el.isDone)
+    }
+    if (props.filter === 'completed') {
+        tasks = tasks.filter(el => el.isDone)
+    }
     // Return JSX elements
     return (
         <div>
@@ -76,7 +81,7 @@ export const Tasklist: React.FC<IPropsType> = memo((props) => {
             </h3>
             <AddItemForm callBack={addTaskHandler}/>
             <ul>
-                {props.tasks.map(el => {
+                {tasks.map(el => {
                     const onChangeChecked = (e: ChangeEvent<HTMLInputElement>) => {
                         const newIsDone = e.currentTarget.checked
                         props.checkedTask(props.todolistID, el.id, newIsDone)

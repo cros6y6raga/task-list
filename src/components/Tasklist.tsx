@@ -1,4 +1,4 @@
-import React, {ChangeEvent, useCallback} from 'react';
+import React, {ChangeEvent, memo, useCallback} from 'react';
 import {FilterValueType} from "../App";
 import {AddItemForm} from "./AddItemForm";
 import {EditableSpan} from "./EditableSpan";
@@ -28,8 +28,8 @@ export interface ITaskArray {
 }
 
 // Drawing a component, I indicated in the typing that it is functional
-export const Tasklist: React.FC<IPropsType> = (props) => {
-
+export const Tasklist: React.FC<IPropsType> = memo((props) => {
+    console.log('13')
     // Function to filter all tasks
     const onClickFilterAll = () => {
         props.filterTasks(props.todolistID, 'all')
@@ -106,4 +106,4 @@ export const Tasklist: React.FC<IPropsType> = (props) => {
                     onClick={onClickFilterCompleted}>Completed</Button>
         </div>
     );
-};
+});

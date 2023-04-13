@@ -45,57 +45,57 @@ function AppWithRedux() {
     let todolistID1 = v1();
     let todolistID2 = v1();
 
-    let todolists = useSelector<AppRootStateType,Array<TodolistsType>>((state)=>state.todolists)
+    let todolists = useSelector<AppRootStateType, Array<TodolistsType>>((state) => state.todolists)
 
-    let tasks = useSelector<AppRootStateType,TasksStateType>((state)=>state.tasks)
+    let tasks = useSelector<AppRootStateType, TasksStateType>((state) => state.tasks)
 
     const dispatch = useDispatch()
 
     // Change task function
-    const editTask = (todolistID: string, taskId: string, newTitle: string) => {
-        let action = changeTaskTitleAC(todolistID, newTitle,todolistID)
+    const editTask = useCallback((todolistID: string, taskId: string, newTitle: string) => {
+        let action = changeTaskTitleAC(todolistID, newTitle, todolistID)
         dispatch(action)
-    }
+    }, [dispatch])
 
     // Change todolist function
-    const editTodo = (todolistID: string, newTask: string) => {
-        dispatch(editTodoAC(todolistID,newTask))
-    }
+    const editTodo = useCallback((todolistID: string, newTask: string) => {
+        dispatch(editTodoAC(todolistID, newTask))
+    }, [dispatch])
 
     // Delete function todolist
-    const removeTodolist = (todolistID: string) => {
+    const removeTodolist = useCallback((todolistID: string) => {
         const action = removeTodolistAC(todolistID)
         dispatch(action)
-    }
+    }, [dispatch])
 
     // Delete task function
-    const removeTask = (todolistID: string, id: string) => {
-        let action = removeTaskAC(id,todolistID)
+    const removeTask = useCallback((todolistID: string, id: string) => {
+        let action = removeTaskAC(id, todolistID)
         dispatch(action)
-    }
+    }, [dispatch])
 
     // Add a task function
     const addTask = useCallback((todolistID: string, title: string) => {
-        let action = addTaskAC(title,todolistID)
+        let action = addTaskAC(title, todolistID)
         dispatch(action)
-    },[dispatch])
+    }, [dispatch])
 
     // Filter function tasks
-    const filterTasks = (todolistID: string, value: FilterValueType) => {
-        dispatch(filterTasksAC(todolistID,value))
-    }
+    const filterTasks = useCallback((todolistID: string, value: FilterValueType) => {
+        dispatch(filterTasksAC(todolistID, value))
+    }, [dispatch])
 
     // Checkbox switching function
-    const checkedTask = (todolistID: string, id: string, checked: boolean) => {
-        let action = changeTaskStatusAC(id, checked,todolistID)
+    const checkedTask = useCallback((todolistID: string, id: string, checked: boolean) => {
+        let action = changeTaskStatusAC(id, checked, todolistID)
         dispatch(action)
-    }
+    }, [dispatch])
 
     // Adding a todolist Function
     const addTodolist = useCallback((newTitle: string) => {
-        const action =addTodolistAC(newTitle)
+        const action = addTodolistAC(newTitle)
         dispatch(action)
-    },[dispatch])
+    }, [dispatch])
 
     // Return JSX elements
     return (

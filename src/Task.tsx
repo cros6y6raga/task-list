@@ -2,7 +2,7 @@ import React, {ChangeEvent, memo} from 'react';
 import {Checkbox, IconButton} from "@mui/material";
 import {Delete} from "@mui/icons-material";
 import {EditableSpan} from "./components/EditableSpan";
-import {IPropsType, ITaskArray} from "./components/Tasklist";
+import {ITaskArray} from "./components/Tasklist";
 
 type TaskPropsType = {
     task: ITaskArray

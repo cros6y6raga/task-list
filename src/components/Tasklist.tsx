@@ -1,4 +1,4 @@
-import React, {ChangeEvent, memo, useCallback} from 'react';
+import React, {memo, useCallback} from 'react';
 import {FilterValueType} from "../App";
 import {AddItemForm} from "./AddItemForm";
 import {EditableSpan} from "./EditableSpan";

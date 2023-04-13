@@ -30,19 +30,19 @@ export interface ITaskArray {
 // Drawing a component, I indicated in the typing that it is functional
 export const Tasklist: React.FC<IPropsType> = memo((props) => {
     // Function to filter all tasks
-    const onClickFilterAll = () => {
+    const onClickFilterAll = useCallback(() => {
         props.filterTasks(props.todolistID, 'all')
-    }
+    },[props.filterTasks, props.todolistID])
 
     // Function to filter active tasks
-    const onClickFilterActive = () => {
+    const onClickFilterActive = useCallback(() => {
         props.filterTasks(props.todolistID, 'active')
-    }
+    },[props.filterTasks, props.todolistID])
 
     // Function for filtering completed tasks
-    const onClickFilterCompleted = () => {
+    const onClickFilterCompleted = useCallback(() => {
         props.filterTasks(props.todolistID, 'completed')
-    }
+    },[props.filterTasks, props.todolistID])
 
     // Function for adding tasks
     const addTaskHandler = useCallback((title: string) => {

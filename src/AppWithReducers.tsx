@@ -43,12 +43,12 @@ function AppWithReducers() {
     let todolistID1 = v1();
     let todolistID2 = v1();
 
-    let [todolists, dispatchToTodolists] = useReducer<Reducer<Array<TodolistsType>, MainTypeTodolists>>(todolistsReducer,[
+    let [todolists, dispatchToTodolists] = useReducer<Reducer<Array<TodolistsType>, MainTypeTodolists>>(todolistsReducer, [
         {id: todolistID1, title: 'What to learn', filter: 'all'},
         {id: todolistID2, title: 'What to buy', filter: 'all'},
     ])
 
-    let [tasks, dispatchToTasks] = useReducer<Reducer<TasksStateType, MainTypeTasks>>(tasksReducer,{
+    let [tasks, dispatchToTasks] = useReducer<Reducer<TasksStateType, MainTypeTasks>>(tasksReducer, {
         [todolistID1]: [
             {id: v1(), title: "HTML&CSS", isDone: true},
             {id: v1(), title: "JS", isDone: true},
@@ -67,13 +67,13 @@ function AppWithReducers() {
 
     // Change task function
     const editTask = (todolistID: string, taskId: string, newTitle: string) => {
-        let action = changeTaskTitleAC(todolistID, newTitle,todolistID)
+        let action = changeTaskTitleAC(todolistID, newTitle, todolistID)
         dispatchToTasks(action)
     }
 
     // Change todolist function
     const editTodo = (todolistID: string, newTask: string) => {
-        dispatchToTodolists(editTodoAC(todolistID,newTask))
+        dispatchToTodolists(editTodoAC(todolistID, newTask))
     }
 
     // Delete function todolist
@@ -85,30 +85,30 @@ function AppWithReducers() {
 
     // Delete task function
     const removeTask = (todolistID: string, id: string) => {
-        let action = removeTaskAC(id,todolistID)
+        let action = removeTaskAC(id, todolistID)
         dispatchToTasks(action)
     }
 
     // Add a task function
     const addTask = (todolistID: string, title: string) => {
-        let action = addTaskAC(title,todolistID)
+        let action = addTaskAC(title, todolistID)
         dispatchToTasks(action)
     }
 
     // Filter function tasks
     const filterTasks = (todolistID: string, value: FilterValueType) => {
-        dispatchToTodolists(filterTasksAC(todolistID,value))
+        dispatchToTodolists(filterTasksAC(todolistID, value))
     }
 
     // Checkbox switching function
     const checkedTask = (todolistID: string, id: string, checked: boolean) => {
-        let action = changeTaskStatusAC(id, checked,todolistID)
+        let action = changeTaskStatusAC(id, checked, todolistID)
         dispatchToTasks(action)
     }
 
     // Adding a todolist Function
     const addTodolist = (newTitle: string) => {
-        const action =addTodolistAC(newTitle)
+        const action = addTodolistAC(newTitle)
         dispatchToTodolists(action)
         dispatchToTasks(action)
     }

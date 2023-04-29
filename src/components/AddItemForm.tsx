@@ -1,7 +1,7 @@
 import React, {ChangeEvent, KeyboardEvent, memo, useState} from 'react';
 import {Button, TextField} from "@mui/material";
 
-type PropsType = {
+export type PropsType = {
     callBack: (title: string) => void
 }
 
